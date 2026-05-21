@@ -22,6 +22,8 @@ export default function SplitPanelExplorer({ sports }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = sports[activeIndex];
 
+  if (!sports.length || !active) return null;
+
   return (
     <section className="w-full bg-[#111111]" style={{ minHeight: '80vh' }}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 py-24">
@@ -45,14 +47,15 @@ export default function SplitPanelExplorer({ sports }: Props) {
                   <button
                     key={sport.id}
                     onClick={() => setActiveIndex(i)}
-                    className="group relative flex items-center gap-4 px-6 py-3.5 text-left transition-colors duration-200 hover:bg-white/[0.03]"
+                    aria-pressed={isActive}
+                    className="group relative flex items-center gap-4 px-6 py-3.5 text-left transition-colors duration-200 hover:bg-white/[0.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/40 focus-visible:outline-offset-[-2px]"
                   >
                     {/* Active left border */}
                     {isActive && (
                       <motion.div
                         layoutId="active-bar"
                         className="absolute left-0 top-0 bottom-0 w-[2px]"
-                        style={{ background: active.color }}
+                        style={{ background: sport.color }}
                         transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                       />
                     )}
@@ -77,7 +80,8 @@ export default function SplitPanelExplorer({ sports }: Props) {
                         initial={{ opacity: 0, x: -4 }}
                         animate={{ opacity: 1, x: 0 }}
                         className="ml-auto text-xs"
-                        style={{ color: active.color }}
+                        style={{ color: sport.color }}
+                        aria-hidden="true"
                       >
                         →
                       </motion.span>
@@ -178,7 +182,7 @@ export default function SplitPanelExplorer({ sports }: Props) {
                         EXPLORE
                       </span>
                       <div className="w-10 h-10 rounded-full border border-white/20 group-hover/cta:border-white/60 flex items-center justify-center transition-colors">
-                        <span className="text-[#F5F0E8] text-sm">→</span>
+                        <span className="text-[#F5F0E8] text-sm" aria-hidden="true">→</span>
                       </div>
                     </Link>
                   </motion.div>
