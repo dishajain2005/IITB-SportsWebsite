@@ -1,0 +1,103 @@
+{
+  "url": "https://gymkhana.iitb.ac.in/sports/contact/",
+  "name": "contact",
+  "fullText": "Home\nSports\nCourt Status\nGC\nYearbook\nBlogs\nEvents Timeline\nTurf Booking\nContact Us\nFeedback\nInstitute Sports Council\n\ngsecsport@iitb.ac.in\n\n+91 96190 00065\n\nDISCOVER THE COUNCIL\n\nWeb Team\n\naryansh.techhead@gmail.com\n\n+91 99928 88093\n\nDISCOVER THE WEB TEAM\n\nQuick Links\nHome\nContact\nFollow Us\n\nCopyright \u00a9 2025 IIT Bombay Sports",
+  "images": [
+    {
+      "src": "https://gymkhana.iitb.ac.in/sports/static/media/sports-logo-transparent.ecff47bad9273a2a8fbe.png",
+      "alt": "IITB Sports Logo"
+    }
+  ],
+  "links": [
+    {
+      "text": "Home",
+      "href": "https://gymkhana.iitb.ac.in/sports"
+    },
+    {
+      "text": "Sports",
+      "href": "https://gymkhana.iitb.ac.in/sports/explore"
+    },
+    {
+      "text": "Court Status",
+      "href": "https://gymkhana.iitb.ac.in/sports/CourtStatus"
+    },
+    {
+      "text": "GC",
+      "href": "https://gymkhana.iitb.ac.in/sports/GC"
+    },
+    {
+      "text": "Yearbook",
+      "href": "https://gymkhana.iitb.ac.in/sports/yearbook"
+    },
+    {
+      "text": "Blogs",
+      "href": "https://gymkhana.iitb.ac.in/sports/blogs"
+    },
+    {
+      "text": "Events Timeline",
+      "href": "https://gymkhana.iitb.ac.in/sports/events-timeline"
+    },
+    {
+      "text": "Turf Booking",
+      "href": "https://gymkhana.iitb.ac.in/sports/turfbooking"
+    },
+    {
+      "text": "Contact Us",
+      "href": "https://gymkhana.iitb.ac.in/sports/contact"
+    },
+    {
+      "text": "Feedback",
+      "href": "https://gymkhana.iitb.ac.in/sports/feedback"
+    },
+    {
+      "text": "DISCOVER THE COUNCIL",
+      "href": "https://gymkhana.iitb.ac.in/sports/Council"
+    },
+    {
+      "text": "DISCOVER THE WEB TEAM",
+      "href": "https://gymkhana.iitb.ac.in/sports/Webteam"
+    },
+    {
+      "text": "Home",
+      "href": "https://gymkhana.iitb.ac.in/sports"
+    },
+    {
+      "text": "Contact",
+      "href": "https://gymkhana.iitb.ac.in/sports/contact"
+    }
+  ],
+  "tables": [],
+  "cards": [
+    {
+      "selector": "[class*=\"Item\"]",
+      "text": "Court Status"
+    },
+    {
+      "selector": "[class*=\"Item\"]",
+      "text": "Events Timeline"
+    },
+    {
+      "selector": "[class*=\"Item\"]",
+      "text": "Turf Booking"
+    }
+  ],
+  "headings": [
+    {
+      "tag": "H2",
+      "text": "Institute Sports Council"
+    },
+    {
+      "tag": "H2",
+      "text": "Web Team"
+    },
+    {
+      "tag": "H3",
+      "text": "Quick Links"
+    },
+    {
+      "tag": "H3",
+      "text": "Follow Us"
+    }
+  ],
+  "fullTextAfterScroll": "Home\nSports\nCourt Status\nGC\nYearbook\nBlogs\nEvents Timeline\nTurf Booking\nContact Us\nFeedback\nInstitute Sports Council\n\ngsecsport@iitb.ac.in\n\n+91 96190 00065\n\nDISCOVER THE COUNCIL\n\nWeb Team\n\naryansh.techhead@gmail.com\n\n+91 99928 88093\n\nDISCOVER THE WEB TEAM\n\nQuick Links\nHome\nContact\nFollow Us\n\nCopyright \u00a9 2025 IIT Bombay Sports"
+}

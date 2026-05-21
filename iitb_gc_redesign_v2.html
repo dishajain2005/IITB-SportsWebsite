@@ -1,0 +1,300 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F5F0E8;
+  --ink: #111111;
+  --gold: #C9A84C;
+  --gold-dim: rgba(201,168,76,0.12);
+  --cream-dim: rgba(245,240,232,0.08);
+  --cream-faint: rgba(245,240,232,0.04);
+  --ink-faint: rgba(17,17,17,0.06);
+  --ink-dim: rgba(17,17,17,0.35);
+  --serif: Georgia, 'Times New Roman', serif;
+  --mono: 'Courier New', Courier, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.page { background: var(--cream); color: var(--ink); font-family: var(--sans); }
+
+/* HERO */
+.hero { background: var(--ink); padding: 52px 44px 44px; position: relative; overflow: hidden; }
+.hero::after {
+  content: 'GC';
+  position: absolute; right: -8px; top: -16px;
+  font-size: 200px; font-weight: 900; line-height: 1;
+  color: rgba(201,168,76,0.06);
+  letter-spacing: -8px;
+  pointer-events: none;
+  font-family: var(--sans);
+}
+.eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.hero-title { font-size: 64px; font-weight: 900; line-height: 0.92; color: var(--cream); text-transform: uppercase; letter-spacing: -2px; margin-bottom: 20px; font-family: var(--sans); }
+.hero-title em { color: var(--gold); font-style: normal; }
+.stat-row { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; gap: 3px; }
+.stat-n { font-size: 30px; font-weight: 900; color: var(--gold); line-height: 1; font-family: var(--sans); }
+.stat-l { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.35); }
+.tab-row { display: flex; gap: 10px; margin-top: 32px; }
+.tab { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 9px 22px; border: 1px solid rgba(245,240,232,0.15); color: rgba(245,240,232,0.4); cursor: pointer; }
+.tab.active { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
+
+/* MARQUEE */
+.marquee { background: var(--gold); padding: 13px 0; overflow: hidden; white-space: nowrap; }
+.marquee-track { display: inline-flex; animation: scroll 20s linear infinite; }
+.m-item { font-size: 13px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--ink); padding: 0 28px; font-family: var(--sans); }
+.m-dot { color: rgba(17,17,17,0.3); font-size: 8px; align-self: center; }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* SECTIONS */
+.sec { padding: 52px 44px; position: relative; overflow: hidden; }
+.sec-dark { background: var(--ink); }
+.sec-cream { background: var(--cream); }
+.ghost-num {
+  position: absolute; left: 40px; top: 32px;
+  font-size: 140px; font-weight: 900; line-height: 1;
+  letter-spacing: -4px; pointer-events: none; z-index: 0;
+  font-family: var(--sans);
+}
+.ghost-dark { color: rgba(201,168,76,0.05); }
+.ghost-light { color: rgba(17,17,17,0.04); }
+.sec-inner { position: relative; z-index: 1; }
+.anno { display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; margin-bottom: 10px; }
+.anno-gold { border: 1px solid rgba(201,168,76,0.4); color: var(--gold); background: rgba(201,168,76,0.08); }
+.anno-ink { border: 1px solid rgba(17,17,17,0.2); color: var(--ink-dim); background: var(--ink-faint); }
+.sec-heading { font-family: var(--serif); font-size: 34px; font-weight: 700; line-height: 1.1; margin-bottom: 40px; }
+.sec-heading-light { color: var(--cream); }
+.sec-heading-dark { color: var(--ink); }
+
+/* PODIUM */
+.podium { display: flex; align-items: flex-end; justify-content: center; gap: 2px; margin-bottom: 40px; }
+.p-card { display: flex; flex-direction: column; align-items: center; }
+.p-name { font-size: 52px; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; line-height: 1; font-family: var(--sans); }
+.p-pts { font-family: var(--mono); font-size: 12px; margin-top: 5px; }
+.p-base { width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 14px; }
+.p-badge { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+
+.p1-card { width: 190px; }
+.p1-card .p-name { font-size: 62px; color: var(--gold); }
+.p1-card .p-pts { color: rgba(245,240,232,0.55); font-size: 14px; }
+.p1-card .p-base { height: 110px; background: var(--gold); }
+.p1-card .p-badge { color: var(--ink); }
+
+.p2-card { width: 150px; }
+.p2-card .p-name { font-size: 44px; color: var(--cream); }
+.p2-card .p-pts { color: rgba(245,240,232,0.4); }
+.p2-card .p-base { height: 76px; background: rgba(245,240,232,0.1); border: 1px solid rgba(245,240,232,0.15); }
+.p2-card .p-badge { color: rgba(245,240,232,0.45); }
+
+.p3-card { width: 130px; }
+.p3-card .p-name { font-size: 36px; color: rgba(245,240,232,0.7); }
+.p3-card .p-pts { color: rgba(245,240,232,0.35); font-size: 11px; }
+.p3-card .p-base { height: 52px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25); }
+.p3-card .p-badge { color: rgba(201,168,76,0.5); }
+
+.podium-caption { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.2); text-align: center; margin-top: 8px; }
+
+/* STANDINGS TABLE */
+.s-table { width: 100%; border-collapse: collapse; }
+.s-table thead tr { border-bottom: 1px solid rgba(17,17,17,0.1); }
+.s-table th { font-family: var(--mono); font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-dim); padding: 0 0 14px; text-align: left; font-weight: 400; }
+.s-table th:last-child { text-align: right; }
+.s-table tbody tr { border-bottom: 1px solid rgba(17,17,17,0.06); transition: background 0.15s; cursor: default; }
+.s-table tbody tr:hover { background: rgba(201,168,76,0.05); }
+.s-table td { padding: 16px 0; font-size: 14px; }
+.s-table td:last-child { text-align: right; font-family: var(--mono); font-size: 13px; font-weight: 700; }
+.rk { font-size: 22px; font-weight: 900; width: 40px; display: inline-block; color: rgba(17,17,17,0.18); font-family: var(--sans); }
+.rk-gold { color: var(--gold); }
+.h-name { font-weight: 700; font-size: 15px; }
+.h-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--ink-dim); background: var(--ink-faint); padding: 2px 8px; margin-left: 8px; text-transform: uppercase; }
+.dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 10px; }
+.dot-gold { background: var(--gold); }
+.dot-dim { background: rgba(17,17,17,0.18); }
+.pts-hi { color: var(--ink); }
+.pts-lo { color: var(--ink-dim); }
+.show-more { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-dim); text-align: right; padding: 14px 0 0; }
+
+/* SPORT SELECTOR */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 32px; }
+.chip { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 7px 14px; border: 1px solid rgba(245,240,232,0.12); color: rgba(245,240,232,0.35); cursor: pointer; transition: all 0.15s; }
+.chip:hover { border-color: rgba(245,240,232,0.3); color: rgba(245,240,232,0.6); }
+.chip.active { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.1); }
+
+/* SPORT RESULT GRID */
+.sport-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(245,240,232,0.07); border: 1px solid rgba(245,240,232,0.07); }
+.sport-title-bar { grid-column: 1 / -1; background: #0a0a0a; padding: 16px 28px; font-family: var(--sans); font-size: 11px; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: rgba(245,240,232,0.15); }
+.sg-cell { background: #161616; padding: 26px 28px; }
+.sg-rank { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.3); margin-bottom: 10px; }
+.sg-hostel { font-size: 44px; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; line-height: 1; font-family: var(--sans); }
+.sg-hostel-gold { color: var(--gold); }
+.sg-hostel-dim { color: rgba(245,240,232,0.75); }
+.sg-pts { font-family: var(--mono); font-size: 11px; color: rgba(245,240,232,0.35); margin-top: 8px; }
+.sg-cta { display: flex; align-items: center; justify-content: center; height: 100%; }
+.sg-cta-btn { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(201,168,76,0.55); border: 1px solid rgba(201,168,76,0.25); padding: 10px 22px; cursor: pointer; }
+</style>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">Inter-Hostel Sports Championship</div>
+    <div class="hero-title">General<br><em>Championship</em></div>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-n">16</span><span class="stat-l">Hostels</span></div>
+      <div class="stat"><span class="stat-n">20+</span><span class="stat-l">Sports</span></div>
+      <div class="stat"><span class="stat-n">2024–25</span><span class="stat-l">Season</span></div>
+    </div>
+    <div class="tab-row">
+      <div class="tab active">Boys GC</div>
+      <div class="tab">Girls GC</div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="m-item">Cricket</span><span class="m-dot">·</span>
+      <span class="m-item">Football</span><span class="m-dot">·</span>
+      <span class="m-item">Basketball</span><span class="m-dot">·</span>
+      <span class="m-item">Badminton</span><span class="m-dot">·</span>
+      <span class="m-item">Hockey</span><span class="m-dot">·</span>
+      <span class="m-item">Athletics</span><span class="m-dot">·</span>
+      <span class="m-item">Aquatics</span><span class="m-dot">·</span>
+      <span class="m-item">Volleyball</span><span class="m-dot">·</span>
+      <span class="m-item">Table Tennis</span><span class="m-dot">·</span>
+      <span class="m-item">Squash</span><span class="m-dot">·</span>
+      <span class="m-item">Cricket</span><span class="m-dot">·</span>
+      <span class="m-item">Football</span><span class="m-dot">·</span>
+      <span class="m-item">Basketball</span><span class="m-dot">·</span>
+      <span class="m-item">Badminton</span><span class="m-dot">·</span>
+      <span class="m-item">Hockey</span><span class="m-dot">·</span>
+      <span class="m-item">Athletics</span><span class="m-dot">·</span>
+      <span class="m-item">Aquatics</span><span class="m-dot">·</span>
+      <span class="m-item">Volleyball</span><span class="m-dot">·</span>
+      <span class="m-item">Table Tennis</span><span class="m-dot">·</span>
+      <span class="m-item">Squash</span><span class="m-dot">·</span>
+    </div>
+  </div>
+
+  <!-- PODIUM -->
+  <div class="sec sec-dark">
+    <div class="ghost-num ghost-dark">01</div>
+    <div class="sec-inner">
+      <div class="anno anno-gold">→ Champions Podium</div>
+      <div class="sec-heading sec-heading-light">This Year's<br>Top Three</div>
+      <div class="podium">
+        <div class="p-card p2-card">
+          <div class="p-name">H3</div>
+          <div class="p-pts">82.5 pts</div>
+          <div class="p-base"><span class="p-badge">02nd</span></div>
+        </div>
+        <div class="p-card p1-card">
+          <div class="p-name">H2</div>
+          <div class="p-pts">99.5 pts</div>
+          <div class="p-base"><span class="p-badge">01st</span></div>
+        </div>
+        <div class="p-card p3-card">
+          <div class="p-name">H18</div>
+          <div class="p-pts">65.5 pts</div>
+          <div class="p-base"><span class="p-badge">03rd</span></div>
+        </div>
+      </div>
+      <div class="podium-caption">Wild Ones · H2 · Boys GC 2024–25</div>
+    </div>
+  </div>
+
+  <!-- STANDINGS -->
+  <div class="sec sec-cream">
+    <div class="ghost-num ghost-light">02</div>
+    <div class="sec-inner">
+      <div class="anno anno-ink">→ Full Leaderboard</div>
+      <div class="sec-heading sec-heading-dark">Overall<br>Standings</div>
+      <table class="s-table">
+        <thead>
+          <tr>
+            <th style="width:52px;">Rank</th>
+            <th>Hostel</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rk rk-gold">01</span></td>
+            <td><span class="dot dot-gold"></span><span class="h-name">H2</span><span class="h-tag">Wild Ones</span></td>
+            <td><span class="pts-hi">99.5</span></td>
+          </tr>
+          <tr>
+            <td><span class="rk">02</span></td>
+            <td><span class="dot dot-dim"></span><span class="h-name">H3</span><span class="h-tag">Aftershock</span></td>
+            <td><span class="pts-hi">82.5</span></td>
+          </tr>
+          <tr>
+            <td><span class="rk">03</span></td>
+            <td><span class="dot dot-dim"></span><span class="h-name">H18</span><span class="h-tag">Lycans</span></td>
+            <td><span class="pts-hi">65.5</span></td>
+          </tr>
+          <tr>
+            <td><span class="rk">04</span></td>
+            <td><span class="dot dot-dim"></span><span class="h-name">H6</span></td>
+            <td><span class="pts-lo">61.5</span></td>
+          </tr>
+          <tr>
+            <td><span class="rk">05</span></td>
+            <td><span class="dot dot-dim"></span><span class="h-name">H5</span></td>
+            <td><span class="pts-lo">61.5</span></td>
+          </tr>
+          <tr>
+            <td><span class="rk">06</span></td>
+            <td><span class="dot dot-dim"></span><span class="h-name">H9</span></td>
+            <td><span class="pts-lo">55</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="show-more">+ 10 more hostels ↓</div>
+    </div>
+  </div>
+
+  <!-- SPORT-WISE -->
+  <div class="sec sec-dark">
+    <div class="ghost-num ghost-dark">03</div>
+    <div class="sec-inner">
+      <div class="anno anno-gold">→ Sport-wise Results</div>
+      <div class="sec-heading sec-heading-light">Filter by<br>Sport</div>
+      <div class="chips">
+        <div class="chip">Aquatics</div>
+        <div class="chip">Athletics</div>
+        <div class="chip active">Basketball</div>
+        <div class="chip">Badminton</div>
+        <div class="chip">Cricket</div>
+        <div class="chip">Football</div>
+        <div class="chip">Hockey</div>
+        <div class="chip">Volleyball</div>
+        <div class="chip">Squash</div>
+        <div class="chip">Table Tennis</div>
+      </div>
+      <div class="sport-grid">
+        <div class="sport-title-bar">Basketball Rankings</div>
+        <div class="sg-cell">
+          <div class="sg-rank">01 — Champion</div>
+          <div class="sg-hostel sg-hostel-gold">H2</div>
+          <div class="sg-pts">10 pts</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-rank">02 — Runner-up</div>
+          <div class="sg-hostel sg-hostel-dim">H13–14</div>
+          <div class="sg-pts">6 pts</div>
+        </div>
+        <div class="sg-cell" style="border-top:1px solid rgba(245,240,232,0.05);">
+          <div class="sg-rank">03 — Third</div>
+          <div class="sg-hostel sg-hostel-dim" style="font-size:36px;">H5</div>
+          <div class="sg-pts">4 pts</div>
+        </div>
+        <div class="sg-cell sg-cta" style="border-top:1px solid rgba(245,240,232,0.05);">
+          <div class="sg-cta-btn">Full Results →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

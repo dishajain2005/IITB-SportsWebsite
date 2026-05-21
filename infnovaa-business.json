@@ -1,0 +1,76 @@
+{
+  "name": "InfNovaa",
+  "overview": "InfNovaa is an AI-powered influencer marketing platform that streamlines brand-creator collaborations through data-driven discovery and real-time analytics. Built by IIT engineers, the platform provides enterprise-grade tools to automate workflows, verify performance metrics via official API integrations, and measure true campaign ROI.",
+  "websiteUrl": "https://infnovaa.com/",
+  "brandValues": ["Transparency", "Efficiency", "Data Integrity", "Innovation", "Scalability"],
+  "visualAesthetics": ["Futuristic Tech-Authority", "Deep Space Professionalism", "Precision Engineering", "Neon Modernism", "Data-Driven Innovation"],
+  "toneOfVoice": ["Professional", "Technical", "Authoritative", "Innovative", "Precise"],
+  "fonts": ["inter"],
+  "campaigns": [{
+    "creatives": [{
+      "title": "Stop the manual marketing grind.",
+      "versions": [{
+        "fileName": "resource_bRZ7kNw4wD749Fj18wNOi_.png"
+      }]
+    }, {
+      "title": "Spreadsheets are stealing your focus.",
+      "versions": [{
+        "fileName": "resource_b6FPrmSFTDw2-0VP935kEf.png"
+      }]
+    }, {
+      "title": "Swap burnout for AI precision.",
+      "versions": [{
+        "fileName": "resource_aiUBrzmqQp639B3SYWc4Cr.png"
+      }]
+    }, {
+      "title": "Automate more. Stress less.",
+      "versions": [{
+        "fileName": "resource_9OuxeuCG_bheEgEYGn3O9_.png"
+      }]
+    }]
+  }, {
+    "creatives": [{
+      "title": "The 1% Reveal",
+      "versions": [{
+        "fileName": "resource_ajnZvy2Dcwd18wI4TcRkGE.png"
+      }]
+    }, {
+      "title": "Verified Impact",
+      "versions": [{
+        "fileName": "resource_bcSwzUQNxXP8fO7LIq2_q8.png"
+      }]
+    }, {
+      "title": "Hidden Innovators",
+      "versions": [{
+        "fileName": "resource_8VR6PEr1G5db4lzsLNA_7q.png"
+      }]
+    }, {
+      "title": "Precision Scale",
+      "versions": [{
+        "fileName": "resource_avnWzFlrAq27KDO25UHOm3.png"
+      }]
+    }]
+  }, {
+    "creatives": [{
+      "title": "Stop Buying Ghost Followers",
+      "versions": [{
+        "fileName": "resource_a8MJGX1BXGJ4r07gb65Onq.png"
+      }]
+    }, {
+      "title": "Vanity Metrics Cost Millions",
+      "versions": [{
+        "fileName": "resource_8n8kwH9WLIu2m14DKqIOmB.png"
+      }]
+    }, {
+      "title": "Verified API-Driven Insights",
+      "versions": [{
+        "fileName": "resource_b7D3buQU_Iqd7qK_zZzkLv.png"
+      }]
+    }, {
+      "title": "Pay Only For Performance",
+      "versions": [{
+        "fileName": "resource_8okc18DWYxz3lbC9WLW_Qp.png"
+      }]
+    }]
+  }]
+}

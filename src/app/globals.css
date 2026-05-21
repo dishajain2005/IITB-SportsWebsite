@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-accent: #C4622D;
+  --color-text-muted: rgba(255, 255, 255, 0.55);
+}
+
+:root {
+  scroll-behavior: smooth;
+  --background: #000000;
+  --foreground: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+  --text-primary: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.55);
+  --accent: #C4622D;
+  --cta-border: #ffffff;
+}
+
+/* 
+   IITB Sport Font System 
+   Mapping the variables injected by next/font/local (on the html tag)
+   to semantic variables used throughout the app.
+*/
+:root {
+  --font-display: var(--font-iitb-display), sans-serif;
+  --font-heading: var(--font-iitb-heading), sans-serif;
+  --font-text: var(--font-iitb-display-text), sans-serif;
+  --font-mono: var(--font-iitb-mono), monospace;
+  --font-caption: var(--font-iitb-caption), sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Cream background — plain, no pattern */
+.bg-cream {
+  background-color: #F5F0E8;
+}
+
+/* Cream background with topographic contour overlay — selected pages only */
+.bg-cream-topo {
+  background-color: #F5F0E8;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'><g fill='none' stroke='rgba(100,55,10,0.10)' stroke-width='1.1'><ellipse cx='450' cy='450' rx='420' ry='220'/><ellipse cx='450' cy='450' rx='340' ry='165'/><ellipse cx='450' cy='450' rx='255' ry='110'/><ellipse cx='150' cy='170' rx='130' ry='75'/><ellipse cx='150' cy='170' rx='80' ry='42'/></g></svg>");
+  background-repeat: repeat;
+  background-size: 900px 900px;
+}
+
+/* 
+   LEGACY MAPPING 
+   Mapping existing utility classes to the new IITB Sport system 
+*/
+
+.font-serif-display,
+.font-hero {
+  font-family: var(--font-display) !important;
+  font-weight: 800;
+}
+
+.font-serif-italic {
+  font-family: var(--font-text) !important;
+  font-weight: 400;
+}
+
+.font-condensed {
+  font-family: var(--font-heading) !important;
+  font-weight: 600;
+}
+
+.font-mono-custom {
+  font-family: var(--font-mono) !important;
+  font-weight: 700;
+}
+
+.font-baskerville {
+  font-family: var(--font-text) !important;
+}
+
+/* NEW SEMANTIC CLASSES */
+
+.font-iitb-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.font-iitb-heading {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.font-iitb-text {
+  font-family: var(--font-text);
+  font-weight: 400;
+}
+
+.font-iitb-mono {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.font-iitb-caption {
+  font-family: var(--font-caption);
+  font-weight: 300;
+}

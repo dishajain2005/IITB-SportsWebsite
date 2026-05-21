@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IITB Sports — Directory (Scrapbook)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE6D8;
+    --near-black: #111111;
+    --gold: #C9A84C;
+    --gold-light: #E2C47A;
+    --text-muted: #6B6257;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--near-black);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.5;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 48px;
+    mix-blend-mode: multiply;
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--near-black);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--near-black);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold); }
+
+  .nav-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--near-black);
+    background: var(--gold);
+    padding: 10px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 160px 48px 60px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .page-header-left h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(72px, 10vw, 130px);
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--near-black);
+  }
+
+  .page-header-left h1 em {
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 0.8em;
+  }
+
+  .page-header-right {
+    text-align: right;
+    max-width: 280px;
+  }
+
+  .page-header-right p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .sport-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* DIVIDER LINE */
+  .divider {
+    height: 1px;
+    background: var(--near-black);
+    margin: 0 48px;
+    opacity: 0.15;
+  }
+
+  /* SCRAPBOOK STAGE */
+  .scrapbook-stage {
+    position: relative;
+    padding: 80px 0 120px;
+  }
+
+  /* Each sport cluster */
+  .sport-cluster {
+    position: relative;
+    margin-bottom: 140px;
+    min-height: 520px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .sport-cluster.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .sport-cluster:hover .cluster-explore {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Photo items inside cluster */
+  .photo-item {
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, z-index 0s;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  }
+
+  .photo-item:hover {
+    z-index: 10 !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    transform: scale(1.03) rotate(0deg) !important;
+  }
+
+  .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.9);
+    transition: filter 0.4s;
+  }
+
+  .photo-item:hover img { filter: saturate(1.1); }
+
+  /* Label above photo */
+  .photo-label {
+    position: absolute;
+    top: -28px;
+    left: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* Sport name anchored at cluster */
+  .cluster-name {
+    position: absolute;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(52px, 6vw, 90px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--near-black);
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .cluster-explore {
+    position: absolute;
+    z-index: 6;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s, transform 0.3s;
+    background: var(--gold);
+    color: var(--near-black);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* CLUSTER LAYOUTS — individual positioning per sport */
+
+  /* AQUATICS */
+  #aquatics { height: 560px; padding-left: 80px; }
+  #aquatics .p1 { width: 420px; height: 300px; top: 60px; left: 80px; transform: rotate(-1.5deg); z-index: 2; }
+  #aquatics .p2 { width: 220px; height: 280px; top: 20px; left: 520px; transform: rotate(2deg); z-index: 1; }
+  #aquatics .p3 { width: 180px; height: 220px; top: 240px; left: 680px; transform: rotate(-0.8deg); z-index: 3; }
+  #aquatics .cluster-name { bottom: 40px; left: 80px; }
+  #aquatics .cluster-explore { bottom: 55px; left: 470px; }
+
+  /* CRICKET */
+  #cricket { height: 560px; padding-right: 80px; }
+  #cricket .p1 { width: 380px; height: 290px; top: 40px; right: 100px; transform: rotate(1.2deg); z-index: 2; }
+  #cricket .p2 { width: 260px; height: 340px; top: 80px; right: 490px; transform: rotate(-2deg); z-index: 1; }
+  #cricket .p3 { width: 160px; height: 190px; top: 30px; right: 500px; transform: rotate(0.5deg); z-index: 3; }
+  #cricket .cluster-name { bottom: 30px; right: 80px; text-align: right; }
+  #cricket .cluster-explore { bottom: 50px; right: 420px; }
+
+  /* FOOTBALL */
+  #football { height: 520px; padding-left: 200px; }
+  #football .p1 { width: 460px; height: 310px; top: 80px; left: 200px; transform: rotate(-0.8deg); z-index: 2; }
+  #football .p2 { width: 200px; height: 250px; top: 30px; left: 670px; transform: rotate(2.5deg); z-index: 1; }
+  #football .cluster-name { bottom: 30px; left: 200px; }
+  #football .cluster-explore { bottom: 50px; left: 560px; }
+
+  /* BADMINTON */
+  #badminton { height: 560px; padding-right: 120px; }
+  #badminton .p1 { width: 300px; height: 380px; top: 30px; right: 120px; transform: rotate(-1.8deg); z-index: 2; }
+  #badminton .p2 { width: 350px; height: 250px; top: 150px; right: 420px; transform: rotate(1.2deg); z-index: 1; }
+  #badminton .p3 { width: 160px; height: 200px; top: 20px; right: 480px; transform: rotate(-3deg); z-index: 3; }
+  #badminton .cluster-name { bottom: 20px; right: 100px; text-align: right; }
+  #badminton .cluster-explore { bottom: 40px; right: 480px; }
+
+  /* BASKETBALL */
+  #basketball { height: 500px; padding-left: 100px; }
+  #basketball .p1 { width: 400px; height: 280px; top: 60px; left: 100px; transform: rotate(1deg); z-index: 2; }
+  #basketball .p2 { width: 220px; height: 300px; top: 40px; left: 510px; transform: rotate(-2.2deg); z-index: 1; }
+  #basketball .cluster-name { bottom: 30px; left: 100px; }
+  #basketball .cluster-explore { bottom: 50px; left: 500px; }
+
+  /* HOCKEY */
+  #hockey { height: 520px; padding-right: 80px; }
+  #hockey .p1 { width: 350px; height: 280px; top: 50px; right: 80px; transform: rotate(-1.2deg); z-index: 2; }
+  #hockey .p2 { width: 280px; height: 360px; top: 20px; right: 420px; transform: rotate(2deg); z-index: 1; }
+  #hockey .cluster-name { bottom: 30px; right: 80px; text-align: right; }
+  #hockey .cluster-explore { bottom: 50px; right: 430px; }
+
+  /* TABLE TENNIS */
+  #tabletennis { height: 480px; padding-left: 160px; }
+  #tabletennis .p1 { width: 420px; height: 290px; top: 70px; left: 160px; transform: rotate(-0.5deg); z-index: 2; }
+  #tabletennis .p2 { width: 190px; height: 240px; top: 30px; left: 590px; transform: rotate(1.8deg); z-index: 1; }
+  #tabletennis .cluster-name { bottom: 20px; left: 160px; }
+  #tabletennis .cluster-explore { bottom: 38px; left: 560px; }
+
+  /* MORE SPORTS PILL ROW */
+  .more-sports {
+    padding: 60px 80px 120px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .more-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-right: 8px;
+  }
+
+  .sport-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--near-black);
+    border: 1px solid rgba(17,17,17,0.25);
+    padding: 10px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+
+  .sport-pill:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--near-black);
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER STRIP */
+  .footer-strip {
+    background: var(--near-black);
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-strip .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+
+  .footer-strip .logo span { color: var(--gold); }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* Placeholder image backgrounds */
+  .bg-pool { background: linear-gradient(135deg, #1a4a6e 0%, #2d7ab5 50%, #1e5f8a 100%); }
+  .bg-cricket { background: linear-gradient(135deg, #2d5a27 0%, #4a8c3f 50%, #3d7a34 100%); }
+  .bg-football { background: linear-gradient(135deg, #1a3a1a 0%, #2d6b2d 50%, #1f5c1f 100%); }
+  .bg-badminton { background: linear-gradient(135deg, #3a1a4a 0%, #6b2d8c 50%, #5c1f7a 100%); }
+  .bg-basketball { background: linear-gradient(135deg, #6e2d1a 0%, #b54a2d 50%, #8a3d1e 100%); }
+  .bg-hockey { background: linear-gradient(135deg, #1a3a5c 0%, #2d6b9e 50%, #1f5c8a 100%); }
+  .bg-tt { background: linear-gradient(135deg, #5c3a1a 0%, #9e6b2d 50%, #8a5c1f 100%); }
+
+  /* Photo placeholder content */
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-placeholder svg {
+    opacity: 0.15;
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Selection tag */
+  .selection-tag {
+    position: absolute;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--cream);
+    color: var(--near-black);
+    padding: 4px 10px;
+    border-radius: 100px;
+    top: 12px;
+    right: 12px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.25s, transform 0.25s;
+  }
+
+  .photo-item:hover .selection-tag {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .page-header { padding: 120px 24px 40px; flex-direction: column; gap: 24px; }
+    .page-header-right { text-align: left; max-width: 100%; }
+    .divider { margin: 0 24px; }
+    .more-sports { padding: 40px 24px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">IITB <span>Sports</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active">Sports</a></li>
+    <li><a href="#">Court Status</a></li>
+    <li><a href="#">GC</a></li>
+    <li><a href="#">Yearbook</a></li>
+    <li><a href="#">Blogs</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Book a Court</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-left">
+    <h1>Every<br><em>Sport.</em><br>One Campus.</h1>
+  </div>
+  <div class="page-header-right">
+    <span class="sport-count">16 Sports · 4 Clubs</span>
+    <p>From the Olympic pool to the cricket crease — explore every sport, team, and facility at IIT Bombay.</p>
+  </div>
+</header>
+
+<div class="divider"></div>
+
+<!-- SCRAPBOOK STAGE -->
+<main class="scrapbook-stage">
+
+  <!-- AQUATICS -->
+  <div class="sport-cluster" id="aquatics">
+    <div class="photo-item p1">
+      <div class="photo-placeholder bg-pool">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <span class="photo-label">Main Pool · 50×25m</span>
+      <div class="selection-tag">Explore →</div>
+    </div>
+    <div class="photo-item p2">
+      <div class="photo-placeholder bg-pool" style="filter: brightness(0.7);">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M17 16.99c-1.35 0-2.2.42-2.95.8-.65.33-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.42-2.95.8c-.65.33-1.18.6-2.05.6v1.95c1.35 0 2.2-.42 2.95-.8.65-.33 1.17-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.42 2.95-.8c.65-.33 1.17-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.57.8 2.95.8v-1.95c-.9 0-1.4-.25-2.05-.6-.77-.38-1.6-.8-2.95-.8z"/></svg>
+      </div>
+    </div>
+    <div class="photo-item p3">
+      <div class="photo-placeholder bg-pool" style="filter: brightness(0.85);">
+      </div>
+      <span class="photo-label">Inter-IIT · 3 Golds</span>
+    </div>
+    <h2 class="cluster-name">Aquatics</h2>
+    <a href="#" class="cluster-explore">Explore →</a>
+  </div>
+
+  <!-- CRICKET -->
+  <div class="sport-cluster" id="cricket">
+    <div class="photo-item p1">
+      <div class="photo-placeholder bg-cricket">
+        <svg viewBox="0 0 24 24" fill="white" width="48" height="48"><circle cx="12" cy="12" r="10"/></svg>
+      </div>
+      <span class="photo-label">GC Season · 2024</span>
+      <div class="selection-tag">Explore →</div>
+    </div>
+    <div class="photo-item p2">
+      <div class="photo-placeholder bg-cricket" style="filter: brightness(0.75);">
+      </div>
+    </div>
+    <div class="photo-item p3">
+      <div class="photo-placeholder bg-cricket" style="filter: brightness(0.9) saturate(0.6);">
+      </div>
+      <span class="photo-label">Inter-IIT Champions</span>
+    </div>
+    <h2 class="cluster-name">Cricket</h2>
+    <a href="#" class="cluster-explore">Explore →</a>
+  </div>
+
+  <!-- FOOTBALL -->
+  <div class="sport-cluster" id="football">
+    <div class="photo-item p1">
+      <div class="photo-placeholder bg-football">
+      </div>
+      <span class="photo-label">Football · Turf A</span>
+      <div class="selection-tag">Explore →</div>
+    </div>
+    <div class="photo-item p2">
+      <div class="photo-placeholder bg-football" style="filter: brightness(0.7);">
+      </div>
+      <span class="photo-label">Practise · 6AM</span>
+    </div>
+    <h2 class="cluster-name">Football</h2>
+    <a href="#" class="cluster-explore">Explore →</a>
+  </div>
+
+  <!-- BADMINTON -->
+  <div class="sport-cluster" id="badminton">
+    <div class="photo-item p1">
+      <div class="photo-placeholder bg-badminton">
+      </div>
+      <div class="selection-tag">Explore →</div>
+    </div>
+    <div class="photo-item p2">
+      <div class="photo-placeholder bg-badminton" style="filter: brightness(0.75) saturate(0.8);">
+      </div>
+      <span class="photo-label">Indoor SAC · Court 1–6</span>
+    </div>
+    <div class="photo-item p3">
+      <div class="photo-placeholder bg-badminton" style="filter: brightness(0.6);">
+      </div>
+    </div>
+    <h2 class="cluster-name">Badminton</h2>
+    <a href="#" class="cluster-explore">Explore →</a>
+  </div>
+
+  <!-- BASKETBALL -->
+  <div class="sport-cluster" id="basketball">
+    <div class="photo-item p1">
+      <div class="photo-placeholder bg-basketball">
+      </div>
+      <span class="photo-label">Basketball · Indoor Arena</span>
+      <div class="selection-tag">Explore →</div>
+    </div>
+    <div class="photo-item p2">
+      <div class="photo-placeholder bg-basketball" style="filter: brightness(0.7);">
+      </div>
+    </div>
+    <h2 class="cluster-name">Basketball</h2>
+    <a href="#" class="cluster-explore">Explore →</a>
+  </div>
+
+  <!-- HOCKEY -->
+  <div class="sport-cluster" id="hockey">
+    <div class="photo-item p1">
+      <div class="photo-placeholder bg-hockey">
+      </div>
+      <span class="photo-label">Hockey · Astroturf</span>
+      <div class="selection-tag">Explore →</div>
+    </div>
+    <div class="photo-item p2">
+      <div class="photo-placeholder bg-hockey" style="filter: brightness(0.8) saturate(0.7);">
+      </div>
+    </div>
+    <h2 class="cluster-name">Hockey</h2>
+    <a href="#" class="cluster-explore">Explore →</a>
+  </div>
+
+  <!-- TABLE TENNIS -->
+  <div class="sport-cluster" id="tabletennis">
+    <div class="photo-item p1">
+      <div class="photo-placeholder bg-tt">
+      </div>
+      <span class="photo-label">Table Tennis · SAC</span>
+      <div class="selection-tag">Explore →</div>
+    </div>
+    <div class="photo-item p2">
+      <div class="photo-placeholder bg-tt" style="filter: brightness(0.7);">
+      </div>
+    </div>
+    <h2 class="cluster-name">Table Tennis</h2>
+    <a href="#" class="cluster-explore">Explore →</a>
+  </div>
+
+</main>
+
+<!-- MORE SPORTS ROW -->
+<section class="more-sports">
+  <span class="more-label">Also at IITB —</span>
+  <a href="#" class="sport-pill">Squash</a>
+  <a href="#" class="sport-pill">Lawn Tennis</a>
+  <a href="#" class="sport-pill">Athletics</a>
+  <a href="#" class="sport-pill">Weightlifting</a>
+  <a href="#" class="sport-pill">Volleyball</a>
+  <a href="#" class="sport-pill">Indian Games</a>
+  <a href="#" class="sport-pill">Board Games</a>
+  <a href="#" class="sport-pill">Adventure Club</a>
+  <a href="#" class="sport-pill">Chess Club</a>
+  <a href="#" class="sport-pill">Yogastha</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-strip">
+  <div class="logo">IITB <span>Sports</span></div>
+  <ul class="footer-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Sports</a></li>
+    <li><a href="#">Court Status</a></li>
+    <li><a href="#">GC</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <span style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(245,240,232,0.3);letter-spacing:0.1em;">© 2025 GYMKHANA IITB</span>
+</footer>
+
+<script>
+  // Scroll-triggered reveal
+  const clusters = document.querySelectorAll('.sport-cluster');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  clusters.forEach(c => observer.observe(c));
+
+  // Nav scroll behavior
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(245,240,232,0.92)';
+      nav.style.backdropFilter = 'blur(12px)';
+      nav.style.borderBottom = '1px solid rgba(17,17,17,0.08)';
+      nav.style.mixBlendMode = 'normal';
+    } else {
+      nav.style.background = 'transparent';
+      nav.style.backdropFilter = 'none';
+      nav.style.borderBottom = 'none';
+      nav.style.mixBlendMode = 'multiply';
+    }
+  });
+</script>
+</body>
+</html>

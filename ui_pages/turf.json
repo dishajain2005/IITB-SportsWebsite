@@ -1,0 +1,135 @@
+{
+  "url": "https://gymkhana.iitb.ac.in/sports/turf/",
+  "name": "turf",
+  "fullText": "Home\nSports\nCourt Status\nGC\nYearbook\nBlogs\nEvents Timeline\nTurf Booking\nContact Us\nFeedback\nWELCOME TO\nIIT BOMBAYSPORTS\nAbout Us\n\n\n\nIIT Bombay boasts a vibrant sports scene that keeps students active throughout the year. The institute's calendar is packed with exciting events, ranging from the inter-hostel General Championships to the prestigious Inter-IIT competitions. To nurture this competitive spirit and provide students with the opportunity to pursue their athletic passions, IIT Bombay offers state-of-the-art sports facilities. From basketball and volleyball courts to a swimming pool, football ground, and cricket ground, the institute caters to a wide range of sporting interests. This commitment extends beyond facilities, with students and faculty alike demonstrating a dedication to honing their skills and fostering strong bonds through sportsmanship.\n\nUNTIL.\u00a0\u00a0\u00a0\u00a0VICTORY.\u00a0\u00a0\u00a0\u00a0 ALWAYS.\nBombay BlackCats\n\nThe BlackCats, IIT Bombay's Inter-IIT contingent, is a testament to the institute's unwavering dedication to athletic excellence. Since 1961, the Inter-IIT Sports Meet has served as India's premier inter-collegiate sporting battleground, drawing over 3500 athletes from all IITs. The BlackCats are a force driven by an unparalleled passion for their sports. It burns brightly in the countless hours spent honing their skills, and the unwavering commitment to supporting their teammates. The BlackCats are a living embodiment of IIT Bombay's vibrant sports culture, where dedication, expert coaching, passion, and teamwork become the cornerstones of athletic achievement.\nSports App\n\n(Android + iOS)\n\n\n\nExperience the future of sports management at IIT Bombay with our comprehensive mobile application. The app seamlessly integrates event registration for all sports competitions, automated e-certificate generation for participants and winners, and real-time court booking system for all facilities including basketball, volleyball, badminton, and many more. Stay updated with live GC scores, tournament brackets, and match schedules. Access detailed player profiles and achievements.\n\nLAUNCHING SOON...\nQuick Links\nHome\nContact\nFollow Us\n\nCopyright \u00a9 2025 IIT Bombay Sports",
+  "images": [
+    {
+      "src": "https://gymkhana.iitb.ac.in/sports/static/media/sports-logo-transparent.ecff47bad9273a2a8fbe.png",
+      "alt": "IITB Sports Logo"
+    },
+    {
+      "src": "https://gymkhana.iitb.ac.in/sports/static/media/sports-logo-transparent.ecff47bad9273a2a8fbe.png",
+      "alt": "abim"
+    },
+    {
+      "src": "https://gymkhana.iitb.ac.in/sports/static/media/bcatlogo.1ccfd89dfc9ad2f0f708.png",
+      "alt": "blackcats"
+    },
+    {
+      "src": "https://gymkhana.iitb.ac.in/sports/static/media/sports_app_1.1b54e4f815a5caf2e860.png",
+      "alt": "sports app 1"
+    },
+    {
+      "src": "https://gymkhana.iitb.ac.in/sports/static/media/sports_app_2.c33fd221350339dd252a.png",
+      "alt": "sports app 2"
+    },
+    {
+      "src": "https://gymkhana.iitb.ac.in/sports/static/media/sports_app_3.f8e249f9f69f35190fe0.png",
+      "alt": "sports app 3"
+    },
+    {
+      "src": "https://gymkhana.iitb.ac.in/sports/static/media/sports_app_4.1a6bae04b33b74b26faa.png",
+      "alt": "sports app 4"
+    },
+    {
+      "src": "https://gymkhana.iitb.ac.in/sports/static/media/sports_app_5.4e6b9da190ee4bd00f6d.png",
+      "alt": "sports app 5"
+    }
+  ],
+  "links": [
+    {
+      "text": "Home",
+      "href": "https://gymkhana.iitb.ac.in/sports"
+    },
+    {
+      "text": "Sports",
+      "href": "https://gymkhana.iitb.ac.in/sports/explore"
+    },
+    {
+      "text": "Court Status",
+      "href": "https://gymkhana.iitb.ac.in/sports/CourtStatus"
+    },
+    {
+      "text": "GC",
+      "href": "https://gymkhana.iitb.ac.in/sports/GC"
+    },
+    {
+      "text": "Yearbook",
+      "href": "https://gymkhana.iitb.ac.in/sports/yearbook"
+    },
+    {
+      "text": "Blogs",
+      "href": "https://gymkhana.iitb.ac.in/sports/blogs"
+    },
+    {
+      "text": "Events Timeline",
+      "href": "https://gymkhana.iitb.ac.in/sports/events-timeline"
+    },
+    {
+      "text": "Turf Booking",
+      "href": "https://gymkhana.iitb.ac.in/sports/turfbooking"
+    },
+    {
+      "text": "Contact Us",
+      "href": "https://gymkhana.iitb.ac.in/sports/contact"
+    },
+    {
+      "text": "Feedback",
+      "href": "https://gymkhana.iitb.ac.in/sports/feedback"
+    },
+    {
+      "text": "Home",
+      "href": "https://gymkhana.iitb.ac.in/sports"
+    },
+    {
+      "text": "Contact",
+      "href": "https://gymkhana.iitb.ac.in/sports/contact"
+    }
+  ],
+  "tables": [],
+  "cards": [
+    {
+      "selector": "[class*=\"sport\"]",
+      "text": "Sports App\n\n(Android + iOS)\n\n\n\nExperience the future of sports management at IIT Bombay with our comprehensive mobile application. The app seamlessly integrates event registration for all sports competitions, automated e-certificate generation for participants and winners, and real-time court booking system for all facilities including basketball, volleyball, badminton, and many more. Stay updated with live GC scores, tournament brackets, and match schedules. Access detailed player profiles and achievements.\n\nLAUNCHING SOON..."
+    },
+    {
+      "selector": "[class*=\"sport\"]",
+      "text": "Sports App\n\n(Android + iOS)\n\n\n\nExperience the future of sports management at IIT Bombay with our comprehensive mobile application. The app seamlessly integrates event registration for all sports competitions, automated e-certificate generation for participants and winners, and real-time court booking system for all facilities including basketball, volleyball, badminton, and many more. Stay updated with live GC scores, tournament brackets, and match schedules. Access detailed player profiles and achievements.\n\nLAUNCHING SOON..."
+    }
+  ],
+  "headings": [
+    {
+      "tag": "H3",
+      "text": "WELCOME TO"
+    },
+    {
+      "tag": "H1",
+      "text": "IIT BOMBAYSPORTS"
+    },
+    {
+      "tag": "H4",
+      "text": "About Us"
+    },
+    {
+      "tag": "H4",
+      "text": "UNTIL.\u00a0\u00a0\u00a0\u00a0VICTORY.\u00a0\u00a0\u00a0\u00a0 ALWAYS."
+    },
+    {
+      "tag": "H4",
+      "text": "Bombay BlackCats"
+    },
+    {
+      "tag": "H4",
+      "text": "Sports App"
+    },
+    {
+      "tag": "H3",
+      "text": "Quick Links"
+    },
+    {
+      "tag": "H3",
+      "text": "Follow Us"
+    }
+  ],
+  "fullTextAfterScroll": "Home\nSports\nCourt Status\nGC\nYearbook\nBlogs\nEvents Timeline\nTurf Booking\nContact Us\nFeedback\nWELCOME TO\nIIT BOMBAYSPORTS\nAbout Us\n\n\n\nIIT Bombay boasts a vibrant sports scene that keeps students active throughout the year. The institute's calendar is packed with exciting events, ranging from the inter-hostel General Championships to the prestigious Inter-IIT competitions. To nurture this competitive spirit and provide students with the opportunity to pursue their athletic passions, IIT Bombay offers state-of-the-art sports facilities. From basketball and volleyball courts to a swimming pool, football ground, and cricket ground, the institute caters to a wide range of sporting interests. This commitment extends beyond facilities, with students and faculty alike demonstrating a dedication to honing their skills and fostering strong bonds through sportsmanship.\n\nUNTIL.\u00a0\u00a0\u00a0\u00a0VICTORY.\u00a0\u00a0\u00a0\u00a0 ALWAYS.\nBombay BlackCats\n\nThe BlackCats, IIT Bombay's Inter-IIT contingent, is a testament to the institute's unwavering dedication to athletic excellence. Since 1961, the Inter-IIT Sports Meet has served as India's premier inter-collegiate sporting battleground, drawing over 3500 athletes from all IITs. The BlackCats are a force driven by an unparalleled passion for their sports. It burns brightly in the countless hours spent honing their skills, and the unwavering commitment to supporting their teammates. The BlackCats are a living embodiment of IIT Bombay's vibrant sports culture, where dedication, expert coaching, passion, and teamwork become the cornerstones of athletic achievement.\nSports App\n\n(Android + iOS)\n\n\n\nExperience the future of sports management at IIT Bombay with our comprehensive mobile application. The app seamlessly integrates event registration for all sports competitions, automated e-certificate generation for participants and winners, and real-time court booking system for all facilities including basketball, volleyball, badminton, and many more. Stay updated with live GC scores, tournament brackets, and match schedules. Access detailed player profiles and achievements.\n\nLAUNCHING SOON...\nQuick Links\nHome\nContact\nFollow Us\n\nCopyright \u00a9 2025 IIT Bombay Sports"
+}

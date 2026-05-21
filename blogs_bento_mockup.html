@@ -1,0 +1,605 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap');
+
+  .blogs-page {
+    background: #F5F0E8;
+    font-family: 'DM Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+    color: #111111;
+  }
+
+  .hero-section {
+    background: #111111;
+    padding: 64px 56px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  .hero-display {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(72px, 10vw, 140px);
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: #F5F0E8;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -1px;
+  }
+
+  .hero-rule {
+    width: 120px;
+    height: 2px;
+    background: #C9A84C;
+    margin: 16px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #C9A84C;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    position: relative;
+    z-index: 1;
+    margin-top: 4px;
+  }
+
+  .section-wrapper {
+    padding: 64px 56px;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .section-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 200px;
+    line-height: 1;
+    color: rgba(17,17,17,0.05);
+    position: absolute;
+    top: -60px;
+    left: -16px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .section-title-col {
+    position: relative;
+    z-index: 1;
+    padding-top: 8px;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #C9A84C;
+    margin-bottom: 12px;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.15;
+    color: #111111;
+  }
+
+  .section-divider {
+    width: 2px;
+    background: #C9A84C;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+
+  .section-desc-col {
+    position: relative;
+    z-index: 1;
+    padding-top: 16px;
+    padding-left: 32px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+    max-width: 340px;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(17,17,17,0.08);
+    transition: border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover {
+    border-color: #C9A84C;
+  }
+
+  .card-featured {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .card-tall {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-img-featured {
+    height: 300px;
+  }
+
+  .card-img-tall {
+    height: 260px;
+  }
+
+  .card-img-placeholder {
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .img-placeholder-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    color: rgba(201,168,76,0.2);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+  }
+
+  .card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-month {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #C9A84C;
+    margin-bottom: 10px;
+  }
+
+  .card-title-featured {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.2;
+    color: #111;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    color: #111;
+    margin-bottom: 10px;
+  }
+
+  .card-excerpt {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #666;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .card-excerpt-featured {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 24px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #C9A84C;
+    border: 1px solid #C9A84C;
+    border-radius: 2px;
+    padding: 3px 8px;
+  }
+
+  .read-more {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: #111;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+
+  .read-more:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .arrow {
+    display: inline-block;
+    transition: transform 0.2s;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .card-divider {
+    height: 1px;
+    background: rgba(17,17,17,0.08);
+    margin: 20px 0 0;
+  }
+
+  .marquee-section {
+    background: #C9A84C;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 24s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    text-transform: uppercase;
+    color: #111111;
+    white-space: nowrap;
+    padding: 16px 40px;
+    letter-spacing: 2px;
+  }
+
+  .marquee-dot {
+    color: rgba(17,17,17,0.25);
+    padding: 16px 0;
+    font-size: 52px;
+    display: flex;
+    align-items: center;
+  }
+
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 0;
+  }
+
+  .card-sm {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-bar {
+    background: rgba(17,17,17,0.97);
+    padding: 0 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: #F5F0E8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo-icon {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #C9A84C;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-size: 13px;
+    color: rgba(245,240,232,0.5);
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .nav-link-active {
+    color: #F5F0E8;
+    position: relative;
+  }
+
+  .nav-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #C9A84C;
+  }
+
+  .nav-cta {
+    background: #C9A84C;
+    color: #111;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'DM Mono', monospace;
+    padding: 7px 16px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+</style>
+
+<div class="blogs-page">
+  <h2 class="sr-only" style="position:absolute;left:-9999px">Event Highlights blog page mockup — IITB Sports redesign showing editorial bento grid layout with featured article and smaller cards</h2>
+
+  <div class="nav-bar">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 7L7 13L1 7Z" stroke="#C9A84C" stroke-width="1.5" fill="none"/></svg>
+      </div>
+      IITB Sports
+    </div>
+    <div class="nav-links">
+      <span class="nav-link">Home</span>
+      <span class="nav-link">Sports</span>
+      <span class="nav-link">Court Status</span>
+      <span class="nav-link">GC</span>
+      <span class="nav-link">Yearbook</span>
+      <span class="nav-link nav-link-active">Blogs</span>
+      <span class="nav-link">Events Timeline</span>
+    </div>
+    <div class="nav-cta">Book a Court →</div>
+  </div>
+
+  <div class="hero-section">
+    <div class="hero-grain"></div>
+    <div class="hero-display">Event</div>
+    <div class="hero-rule"></div>
+    <div class="hero-display">Highlights</div>
+    <div class="hero-eyebrow" style="margin-top: 20px;">Celebrating Sports Excellence · Month by Month</div>
+  </div>
+
+  <div class="section-wrapper">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <div class="section-title-col">
+        <div class="section-label">Our Journey</div>
+        <div class="section-heading">Through Sports</div>
+      </div>
+      <div class="section-divider"></div>
+      <div class="section-desc-col">
+        <p class="section-desc">Explore the remarkable events organized by the Sports Council throughout the year — from campus orientations to national showcases.</p>
+      </div>
+    </div>
+
+    <div class="bento-grid">
+      <div class="card card-featured">
+        <div class="card-img-placeholder card-img card-img-featured" style="height:300px;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d0d0d 0%,#1a1208 100%);"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:80px;color:rgba(201,168,76,0.15);text-transform:uppercase;letter-spacing:4px;line-height:1;">Badminton</div>
+            <div style="width:60px;height:2px;background:#C9A84C;margin:8px auto;opacity:0.5;"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;color:#C9A84C;opacity:0.6;letter-spacing:0.14em;">SEPT 2024</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-month">September 2024 · Featured</div>
+          <div class="card-title-featured">Lakshya Sen Electrifies IIT Bombay</div>
+          <div class="card-excerpt-featured">The campus was buzzing as we had the incredible opportunity to host one of India's finest badminton players for an electrifying session. The event delivered on its promise of speed, precision, and power — 500+ attendees witnessed greatness on our own court.</div>
+          <div class="card-divider"></div>
+          <div class="card-footer" style="margin-top:16px;">
+            <div class="tags">
+              <span class="tag">World-Class Demo</span>
+              <span class="tag">500+ Attendees</span>
+              <span class="tag">Red Bull Sponsored</span>
+            </div>
+            <a class="read-more" href="#">Read <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-tall">
+        <div class="card-img-placeholder card-img card-img-tall" style="height:260px;">
+          <div style="position:absolute;inset:0;background:linear-gradient(160deg,#0a1a0d 0%,#1a1208 100%);"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:60px;color:rgba(201,168,76,0.12);text-transform:uppercase;letter-spacing:2px;line-height:1;">Football</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-month">May 2024</div>
+          <div class="card-title">Inter-Hostel Football Showdown</div>
+          <div class="card-excerpt">The annual hostel championship returned with record participation across all 14 hostels. Finals went into penalty shootout — electricity in the air as H8 clinched the title in sudden death.</div>
+          <div class="card-divider"></div>
+          <div class="card-footer" style="margin-top:16px;">
+            <div class="tags">
+              <span class="tag">Inter-Hostel</span>
+              <span class="tag">GC Points</span>
+            </div>
+            <a class="read-more" href="#">→</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-sm" style="grid-column:1/2;grid-row:2/3;">
+        <div class="card-img-placeholder card-img" style="height:180px;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d0d18 0%,#0a0a20 100%);"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;color:rgba(201,168,76,0.1);text-transform:uppercase;">Running</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-month">August 2024</div>
+          <div class="card-title">UG Sports Orientation</div>
+          <div class="card-excerpt">The new undergraduate batch was officially welcomed to the vibrant world of IITB sports. A massive success — fully introducing students to the athletic culture that defines the institute.</div>
+          <div class="card-divider"></div>
+          <div class="card-footer" style="margin-top:12px;">
+            <div class="tags">
+              <span class="tag">New UG Batch</span>
+              <span class="tag">BlackCats Spirit</span>
+            </div>
+            <a class="read-more" href="#">→</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-sm" style="grid-column:2/3;grid-row:2/3;">
+        <div class="card-img-placeholder card-img" style="height:180px;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#160a08 0%,#200d0a 100%);"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;color:rgba(201,168,76,0.1);text-transform:uppercase;">Tennis</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-month">July 2024</div>
+          <div class="card-title">PG Mania 2025</div>
+          <div class="card-excerpt">A fierce showdown of skill and spirit. PG Mania wrapped up its successful run — the ultimate test of skill and teamwork for the PG community across weekend showdowns.</div>
+          <div class="card-divider"></div>
+          <div class="card-footer" style="margin-top:12px;">
+            <div class="tags">
+              <span class="tag">PG Exclusive</span>
+              <span class="tag">Skill & Teamwork</span>
+            </div>
+            <a class="read-more" href="#">→</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Where Champions Are Made</span>
+      <span class="marquee-dot">·</span>
+      <span class="marquee-item">Until Victory Always</span>
+      <span class="marquee-dot">·</span>
+      <span class="marquee-item">IITB Sports</span>
+      <span class="marquee-dot">·</span>
+      <span class="marquee-item">Where Champions Are Made</span>
+      <span class="marquee-dot">·</span>
+      <span class="marquee-item">Until Victory Always</span>
+      <span class="marquee-dot">·</span>
+      <span class="marquee-item">IITB Sports</span>
+      <span class="marquee-dot">·</span>
+    </div>
+  </div>
+
+  <div style="background:#111111;padding:48px 56px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;align-items:start;">
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:#F5F0E8;text-transform:uppercase;letter-spacing:2px;">IITB Sports</div>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:#C9A84C;margin-top:8px;">"Until. Victory. Always."</div>
+    </div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(245,240,232,0.3);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px;">Quick Links</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <a style="font-size:13px;color:rgba(245,240,232,0.55);text-decoration:none;">Home</a>
+        <a style="font-size:13px;color:rgba(245,240,232,0.55);text-decoration:none;">Sports Directory</a>
+        <a style="font-size:13px;color:rgba(245,240,232,0.55);text-decoration:none;">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(245,240,232,0.3);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px;">Connect</div>
+      <div style="display:flex;gap:12px;">
+        <div style="width:32px;height:32px;border:1px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;border-radius:2px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div style="width:32px;height:32px;border:1px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;border-radius:2px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div style="width:32px;height:32px;border:1px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;border-radius:2px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </div>
+      </div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(245,240,232,0.2);margin-top:32px;letter-spacing:0.08em;">© 2025 IIT Bombay Sports</div>
+    </div>
+  </div>
+</div>
