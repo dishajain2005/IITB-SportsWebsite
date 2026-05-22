@@ -415,20 +415,6 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="flex flex-col gap-6 border-t border-[#111111]/10 pt-8 md:flex-row md:items-end md:justify-between">
-                  <span className="font-condensed text-4xl font-black uppercase tracking-[0.3em] text-[#111111]/20">
-                    Launching Soon
-                  </span>
-                  <div className="flex items-center gap-3">
-                    <span className="rounded-full border border-[#111111]/20 px-4 py-1.5 font-mono-custom text-[10px] font-black uppercase tracking-[0.22em] text-[#111111]/40">
-                      Android
-                    </span>
-                    <span className="text-[#111111]/20">·</span>
-                    <span className="rounded-full border border-[#111111]/20 px-4 py-1.5 font-mono-custom text-[10px] font-black uppercase tracking-[0.22em] text-[#111111]/40">
-                      iOS
-                    </span>
-                  </div>
-                </div>
               </div>
             </div>
           </motion.section>

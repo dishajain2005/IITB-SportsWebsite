@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -21,36 +21,11 @@ const COURT_BOOKING_URL = 'https://court-booking-assignment.vercel.app/login';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isNavVisible, setIsNavVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const lastScrollYRef = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
-    const HERO_THRESHOLD = window.innerHeight * 0.8;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      setIsScrolled(currentScrollY > 80);
-
-      if (currentScrollY <= 10) {
-        // at very top — hide
-        setIsNavVisible(false);
-      } else if (currentScrollY < lastScrollYRef.current) {
-        // scrolling up anywhere — show
-        setIsNavVisible(true);
-      } else if (currentScrollY < HERO_THRESHOLD) {
-        // scrolling down inside hero — hide
-        setIsNavVisible(false);
-      } else {
-        // scrolling down past hero — hide
-        setIsNavVisible(false);
-      }
-
-      lastScrollYRef.current = currentScrollY;
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 80);
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -60,7 +35,7 @@ export default function Navbar() {
     <>
       <nav
         aria-label="Main Navigation"
-        className={`fixed top-0 left-0 right-0 z-50 transition-[transform,opacity] duration-500 px-6 md:px-12 h-20 flex items-center justify-between bg-white/95 backdrop-blur-md shadow-[0_1px_20px_rgba(0,0,0,0.08)] ${isNavVisible || mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
+        className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 h-20 flex items-center justify-between bg-white/95 backdrop-blur-md shadow-[0_1px_20px_rgba(0,0,0,0.08)]"
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group" aria-label="Go to homepage">

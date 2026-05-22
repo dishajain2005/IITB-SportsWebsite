@@ -81,7 +81,7 @@ export default function RootLayout({
       ${iitbSportMono.variable} 
       ${iitbSportCaption.variable}
     `}>
-      <body className="antialiased">
+      <body className="antialiased pt-20">
         {/* Global Grain Texture — static PNG tile, GPU-uploaded once, no live SVG filter */}
         <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.4] mix-blend-overlay"
              style={{ backgroundImage: 'url(/noise.png)', backgroundSize: '64px 64px' }} />
