@@ -39,8 +39,8 @@ export default function SplitPanelExplorer({ sports }: Props) {
               </span>
             </div>
 
-            {/* Sport list */}
-            <nav className="flex flex-col flex-1 py-3">
+            {/* Sport list — vertical on desktop, horizontal scroll on mobile */}
+            <nav className="flex lg:flex-col flex-row overflow-x-auto lg:overflow-x-visible py-3 scrollbar-none">
               {sports.map((sport, i) => {
                 const isActive = i === activeIndex;
                 return (
@@ -48,38 +48,50 @@ export default function SplitPanelExplorer({ sports }: Props) {
                     key={sport.id}
                     onClick={() => setActiveIndex(i)}
                     aria-pressed={isActive}
-                    className="group relative flex items-center gap-4 px-6 py-3.5 text-left transition-colors duration-200 hover:bg-white/[0.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/40 focus-visible:outline-offset-[-2px]"
+                    className="group relative flex items-center gap-3 lg:gap-4 px-4 lg:px-6 py-3 lg:py-3.5 text-left transition-colors duration-200 hover:bg-white/[0.03] shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/40 focus-visible:outline-offset-[-2px]"
                   >
-                    {/* Active left border */}
+                    {/* Active left border — desktop only */}
                     {isActive && (
                       <motion.div
                         layoutId="active-bar"
-                        className="absolute left-0 top-0 bottom-0 w-[2px]"
+                        className="absolute left-0 top-0 bottom-0 w-[2px] hidden lg:block"
                         style={{ background: sport.color }}
                         transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                       />
                     )}
 
-                    {/* Number */}
-                    <span className="font-mono-custom text-[9px] font-black tracking-[0.2em] w-6 shrink-0"
-                      style={{ color: isActive ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.12)' }}>
+                    {/* Active bottom border — mobile only */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="active-bar-mobile"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] lg:hidden"
+                        style={{ background: sport.color }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                      />
+                    )}
+
+                    {/* Number — desktop only */}
+                    <span
+                      className="font-mono-custom text-[9px] font-black tracking-[0.2em] w-6 shrink-0 hidden lg:block"
+                      style={{ color: isActive ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.12)' }}
+                    >
                       {String(i + 1).padStart(2, '0')}
                     </span>
 
                     {/* Name */}
                     <span
-                      className="font-condensed font-black text-[13px] uppercase tracking-[0.12em] transition-colors duration-200"
+                      className="font-condensed font-black text-[13px] uppercase tracking-[0.12em] transition-colors duration-200 whitespace-nowrap"
                       style={{ color: isActive ? '#F5F0E8' : 'rgba(245,240,232,0.35)' }}
                     >
                       {sport.name}
                     </span>
 
-                    {/* Arrow on active */}
+                    {/* Arrow — desktop only, active only */}
                     {isActive && (
                       <motion.span
                         initial={{ opacity: 0, x: -4 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="ml-auto text-xs"
+                        className="ml-auto text-xs hidden lg:inline"
                         style={{ color: sport.color }}
                         aria-hidden="true"
                       >
