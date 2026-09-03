@@ -18,7 +18,7 @@ const Timel = () => {
                     <table style={{ width: '100%', borderCollapse: 'collapse', margin: 0, padding: 0 }}>
                         <tbody>
                             <tr><td>Boys</td><td>Silver Medal</td></tr>
-                            <tr><td>Athlete of the Meet</td><td>Raj Yadav (Team player, IITB)</td></tr>
+                            <tr><td>Athlete of the Meet</td><td>Raj Yadav</td></tr>
                         </tbody>
                     </table>
                 </VerticalTimelineElement>
