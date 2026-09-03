@@ -7,6 +7,7 @@ import p2 from '../assets/p2.jpg';
 import p3 from '../assets/p3.jpg';
 import p4 from '../assets/p4.jpg';
 import p5 from '../assets/p5.jpg';
+import p6 from '../assets/p6.jpg';
 import user from '../../../../Contact/pictures/Logos_for_Photos/Khushal.jpg';
 
 // Updated to use the scale trick to allow X-axis panning
@@ -16,6 +17,7 @@ const imageAlignments = {
   [p3]: { objectPosition: '50% 45%', transform: 'scale(1.15)', transformOrigin: '50% 45%' },
   [p4]: { objectPosition: '50% 40%', transform: 'scale(1.15)', transformOrigin: '50% 40%' },
   [p5]: { objectPosition: '50% 33%', transform: 'scale(1.15)', transformOrigin: '95% 33%' },
+  [p6]: { objectPosition: '50% 50%', transform: 'scale(1.0)', transformOrigin: '50% 50%' },
 };
 
 /* ============================================================
@@ -169,9 +171,14 @@ const cards = [
     content:
       'Designed for students enthusiastic about joining the Inter-IIT practice or those who simply want to learn hockey from scratch. A week-long camp held on the hockey field or in the SAC outdoor facilities, depending on conditions during the monsoon season.',
   },
+  {
+    title: 'Mixed Hockey League',
+    content:
+      'A tribute to the greatest hockey player of India and arguably of the world to ever step on the field: Major Dhyan Chand. The Mixed Hockey League is a one of a kind event where both girls and boys form a mixed team and battle it out. It always happens in the week of the National Sports Day, as a way to appreciate and feel the benefits of playing a sport in life.',
+  },
 ];
 
-const galleryImages = [p1, p2, p3, p4, p5];
+const galleryImages = [p1, p2, p3, p4, p5, p6];
 
 /* ============================================================
    HOCKEY
@@ -338,7 +345,7 @@ const Hockey = () => {
             <h2 className="aq-section-title">
               The <span className="italic">fixtures</span>.
             </h2>
-            <p className="aq-section-sub">Five events. Tap a headline to read the full brief.</p>
+            <p className="aq-section-sub">Six events. Tap a headline to read the full brief.</p>
           </div>
 
           <div className="aq-story-columns">
