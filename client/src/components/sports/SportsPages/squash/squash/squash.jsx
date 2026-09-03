@@ -186,11 +186,49 @@ const LegacySquash = () => {
         </div>
 
         {/* ══════════════════════════════════
-            §2  EVENTS
+            §2  TIMINGS
         ══════════════════════════════════ */}
         <section className="aq-section">
           <div className="aq-eyebrow">
             <span className="num">02</span>
+            <span className="bar" />
+            Timings
+          </div>
+          <div className="aq-section-head">
+            <h2 className="aq-section-title">
+              Court <span className="italic">Timings</span>
+            </h2>
+            <p className="aq-section-sub">Morning &amp; Evening Court Hours</p>
+          </div>
+
+          <div className="aq-table-wrap">
+            <table className="aq-table">
+              <thead>
+                <tr>
+                  <th>
+                    <span className="aq-pill aq-pill-morning">Morning</span>
+                  </th>
+                  <th>
+                    <span className="aq-pill aq-pill-evening">Evening</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>6:30 AM – 9:30 AM</td>
+                  <td>4:00 PM – 9:30 PM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════
+            §3  EVENTS
+        ══════════════════════════════════ */}
+        <section className="aq-section">
+          <div className="aq-eyebrow">
+            <span className="num">03</span>
             <span className="bar" />
             Events &amp; Tournaments
           </div>
@@ -225,11 +263,11 @@ const LegacySquash = () => {
         </section>
 
         {/* ══════════════════════════════════
-            §3  ACHIEVEMENTS
+            §4  ACHIEVEMENTS
         ══════════════════════════════════ */}
         <section className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">03</span>
+            <span className="num">04</span>
             <span className="bar" />
             Achievements &amp; Honours
           </div>
@@ -246,11 +284,11 @@ const LegacySquash = () => {
         </section>
 
         {/* ══════════════════════════════════
-            §4  CONTACT
+            §5  CONTACT
         ══════════════════════════════════ */}
         <section className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">04</span>
+            <span className="num">05</span>
             <span className="bar" />
             People &amp; Leadership
           </div>
@@ -274,11 +312,11 @@ const LegacySquash = () => {
       </main>
 
       {/* ══════════════════════════════════
-          §5  GALLERY
+          §6  GALLERY
       ══════════════════════════════════ */}
       <section className="aq-gallery-section">
         <div className="aq-eyebrow" style={{ marginTop: '56px', paddingLeft: 'clamp(16px,3vw,48px)' }}>
-          <span className="num">05</span>
+          <span className="num">06</span>
           <span className="bar" />
           Gallery
         </div>
@@ -328,12 +366,12 @@ const LegacySquash = () => {
       </section>
 
       {/* ══════════════════════════════════
-          §6  LOCATION
+          §7  LOCATION
       ══════════════════════════════════ */}
       <div className="aq-app" style={{ paddingTop: '56px' }}>
         <section className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">06</span>
+            <span className="num">07</span>
             <span className="bar" />
             Location
           </div>

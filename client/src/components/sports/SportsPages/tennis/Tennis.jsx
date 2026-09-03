@@ -302,10 +302,49 @@ const Tennis = () => {
 
         <PhotoBreak image={lt4} tag="Fig. A" caption="On court — serene surroundings, serious play." />
 
-        {/* ── § 02 EVENTS ── */}
+        {/* ── § 02 TIMINGS ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 02</span>&nbsp;·&nbsp;Events
+            <span className="num">§ 02</span>&nbsp;·&nbsp;Timings
+            <span className="bar" />
+          </div>
+          <div className="aq-section-head">
+            <h2 className="aq-section-title">
+              Court <span className="italic">timings</span>.
+            </h2>
+            <p className="aq-section-sub">Upper &amp; Lower Court Schedules.</p>
+          </div>
+
+          <div className="aq-table-wrap">
+            <table className="aq-table">
+              <thead>
+                <tr>
+                  <th>
+                    <span className="aq-pill aq-pill-morning">Morning</span>
+                  </th>
+                  <th>
+                    <span className="aq-pill aq-pill-evening">Evening</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>7:00 AM – 11:00 AM</td>
+                  <td>4:00 PM – 9:00 PM</td>
+                </tr>
+                <tr>
+                  <td>6:30 AM – 1:30 PM</td>
+                  <td>4:30 PM – 9:30 PM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </Reveal>
+
+        {/* ── § 03 EVENTS ── */}
+        <Reveal as="section" className="aq-section">
+          <div className="aq-eyebrow">
+            <span className="num">§ 03</span>&nbsp;·&nbsp;Events
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -351,10 +390,10 @@ const Tennis = () => {
 
         <PhotoBreak image={lt5} tag="Fig. B" caption="Institute Tennis Open — the flagship autumn draw." />
 
-        {/* ── § 03 CONTACT ── */}
+        {/* ── § 04 CONTACT ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 03</span>&nbsp;·&nbsp;Contact
+            <span className="num">§ 04</span>&nbsp;·&nbsp;Contact
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -372,10 +411,10 @@ const Tennis = () => {
           </div>
         </Reveal>
 
-        {/* ── § 04 GALLERY ── */}
+        {/* ── § 05 GALLERY ── */}
         <Reveal as="section" className="aq-section aq-gallery-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 04</span>&nbsp;·&nbsp;Gallery
+            <span className="num">§ 05</span>&nbsp;·&nbsp;Gallery
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -416,10 +455,10 @@ const Tennis = () => {
           </div>
         </Reveal>
 
-        {/* ── § 05 LOCATION ── */}
+        {/* ── § 06 LOCATION ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 05</span>&nbsp;·&nbsp;Location
+            <span className="num">§ 06</span>&nbsp;·&nbsp;Location
             <span className="bar" />
           </div>
           <div className="aq-section-head">

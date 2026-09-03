@@ -312,10 +312,51 @@ const Football = () => {
 
         <PhotoBreak image={turf} tag="Fig. A" caption="The 6-a-side turf — bookable via the Sports App." />
 
-        {/* ── § 02 EVENTS ── */}
+        {/* ── § 02 TIMINGS ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 02</span>&nbsp;·&nbsp;Events
+            <span className="num">§ 02</span>&nbsp;·&nbsp;Timings
+            <span className="bar" />
+          </div>
+          <div className="aq-section-head">
+            <h2 className="aq-section-title">
+              Facility <span className="italic">timings</span>.
+            </h2>
+            <p className="aq-section-sub">Turf &amp; Ground schedules.</p>
+          </div>
+
+          <div className="aq-table-wrap">
+            <table className="aq-table">
+              <thead>
+                <tr>
+                  <th>Facility</th>
+                  <th>Timings</th>
+                  <th>Operational Period</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="aq-section-header">Turf</td>
+                  <td>7:30 AM to 9:30 PM</td>
+                  <td>All year long except gymkhana holidays</td>
+                </tr>
+                <tr>
+                  <td className="aq-section-header" rowSpan={2}>Gymkhana Ground</td>
+                  <td>7:30 AM to 11:30 AM</td>
+                  <td rowSpan={2}>All year long except monsoons and gymkhana holidays</td>
+                </tr>
+                <tr>
+                  <td>5:00 PM to 9:30 PM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </Reveal>
+
+        {/* ── § 03 EVENTS ── */}
+        <Reveal as="section" className="aq-section">
+          <div className="aq-eyebrow">
+            <span className="num">§ 03</span>&nbsp;·&nbsp;Events
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -357,10 +398,10 @@ const Football = () => {
 
         <PhotoBreak image={football_team} tag="Fig. B" caption="Football GC — 11-a-side inter-hostel championship." />
 
-        {/* ── § 03 ACHIEVEMENTS ── */}
+        {/* ── § 04 ACHIEVEMENTS ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 03</span>&nbsp;·&nbsp;Achievements
+            <span className="num">§ 04</span>&nbsp;·&nbsp;Achievements
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -376,10 +417,10 @@ const Football = () => {
           </div>
         </Reveal>
 
-        {/* ── § 04 CONTACT ── */}
+        {/* ── § 05 CONTACT ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 04</span>&nbsp;·&nbsp;Contact
+            <span className="num">§ 05</span>&nbsp;·&nbsp;Contact
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -397,10 +438,10 @@ const Football = () => {
           </div>
         </Reveal>
 
-        {/* ── § 05 GALLERY ── */}
+        {/* ── § 06 GALLERY ── */}
         <Reveal as="section" className="aq-section aq-gallery-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 05</span>&nbsp;·&nbsp;Gallery
+            <span className="num">§ 06</span>&nbsp;·&nbsp;Gallery
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -440,10 +481,10 @@ const Football = () => {
           </div>
         </Reveal>
 
-        {/* ── § 06 LOCATION ── */}
+        {/* ── § 07 LOCATION ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 06</span>&nbsp;·&nbsp;Location
+            <span className="num">§ 07</span>&nbsp;·&nbsp;Location
             <span className="bar" />
           </div>
           <div className="aq-section-head">

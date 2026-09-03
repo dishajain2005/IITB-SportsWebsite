@@ -12,6 +12,18 @@ const Timel = () => {
             <VerticalTimeline lineColor="#ccc" >
                 <VerticalTimelineElement className="vertical-timeline-element--education"
                 iconStyle={{background:'#000', color:'#fff'}}
+                icon={<GiMedal />}
+                date='2025' contentStyle={{ background: '#2F2B77', color: '#fff' }}>
+                    <h3 style={{ fontSize:'25px', color: '#E4E2FA'}}>Inter-IIT 2025 Medals</h3>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', margin: 0, padding: 0 }}>
+                        <tbody>
+                            <tr><td>Boys</td><td>Silver Medal</td></tr>
+                            <tr><td>Athlete of the Meet</td><td>Raj Yadav (Team player, IITB)</td></tr>
+                        </tbody>
+                    </table>
+                </VerticalTimelineElement>
+                <VerticalTimelineElement className="vertical-timeline-element--education"
+                iconStyle={{background:'#000', color:'#fff'}}
                 icon={<GiTrophyCup />}
                 date='2024' contentStyle={{ background: '#2F2B77', color: '#fff' }}
                 style={{ boxShadow: '0' }}>

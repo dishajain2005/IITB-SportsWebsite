@@ -332,10 +332,45 @@ const Tabletennis = () => {
 
         <PhotoBreak image={p5} tag="Fig. A" caption="Team practice in the Gymkhana TT hall." />
 
-        {/* ── § 02 EVENTS ── */}
+        {/* ── § 02 TIMINGS ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 02</span>&nbsp;·&nbsp;Events
+            <span className="num">§ 02</span>&nbsp;·&nbsp;Timings
+            <span className="bar" />
+          </div>
+          <div className="aq-section-head">
+            <h2 className="aq-section-title">
+              Hall <span className="italic">timings</span>.
+            </h2>
+            <p className="aq-section-sub">Morning &amp; Evening Sessions.</p>
+          </div>
+
+          <div className="aq-table-wrap">
+            <table className="aq-table">
+              <thead>
+                <tr>
+                  <th>
+                    <span className="aq-pill aq-pill-morning">Morning</span>
+                  </th>
+                  <th>
+                    <span className="aq-pill aq-pill-evening">Evening</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>7:00 AM – 10:00 AM</td>
+                  <td>5:00 PM – 9:00 PM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </Reveal>
+
+        {/* ── § 03 EVENTS ── */}
+        <Reveal as="section" className="aq-section">
+          <div className="aq-eyebrow">
+            <span className="num">§ 03</span>&nbsp;·&nbsp;Events
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -381,10 +416,10 @@ const Tabletennis = () => {
 
         <PhotoBreak image={p4} tag="Fig. B" caption="Table Tennis GC — the hostel season's marquee event." />
 
-        {/* ── § 03 ACHIEVEMENTS ── */}
+        {/* ── § 04 ACHIEVEMENTS ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 03</span>&nbsp;·&nbsp;Achievements
+            <span className="num">§ 04</span>&nbsp;·&nbsp;Achievements
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -400,10 +435,10 @@ const Tabletennis = () => {
           </div>
         </Reveal>
 
-        {/* ── § 04 CONTACT ── */}
+        {/* ── § 05 CONTACT ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 04</span>&nbsp;·&nbsp;Contact
+            <span className="num">§ 05</span>&nbsp;·&nbsp;Contact
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -421,10 +456,10 @@ const Tabletennis = () => {
           </div>
         </Reveal>
 
-        {/* ── § 05 GALLERY ── */}
+        {/* ── § 06 GALLERY ── */}
         <Reveal as="section" className="aq-section aq-gallery-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 05</span>&nbsp;·&nbsp;Gallery
+            <span className="num">§ 06</span>&nbsp;·&nbsp;Gallery
             <span className="bar" />
           </div>
           <div className="aq-section-head">
@@ -465,10 +500,10 @@ const Tabletennis = () => {
           </div>
         </Reveal>
 
-        {/* ── § 06 LOCATION ── */}
+        {/* ── § 07 LOCATION ── */}
         <Reveal as="section" className="aq-section">
           <div className="aq-eyebrow">
-            <span className="num">§ 06</span>&nbsp;·&nbsp;Location
+            <span className="num">§ 07</span>&nbsp;·&nbsp;Location
             <span className="bar" />
           </div>
           <div className="aq-section-head">
