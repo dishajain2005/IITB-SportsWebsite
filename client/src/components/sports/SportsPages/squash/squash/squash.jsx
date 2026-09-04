@@ -12,6 +12,21 @@ import p7 from '../assets/p7.jpeg';
 import p8 from '../assets/p8.jpeg';
 import user from '../assets/user.jpg';
 import squashLogo from '../../../../Contact/pictures/Logos_for_Photos/squash.png';
+// MASTER ALIGNMENT DICTIONARY
+// objectPosition: 'X% Y%' -> First percentage = Left/Right (X-axis), Second percentage = Up/Down (Y-axis)
+// transform: 'scale(Z)' -> Zoom scale multiplier
+// transformOrigin: 'OX% OY%' -> Origin pivot point for zoom scale
+const imageAlignments = {
+  [p1]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [p2]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [p3]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [p4]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [p5]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  // Newly added Squash images
+  [p6]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [p7]: { objectPosition: '50% 100%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [p8]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+};
 
 const LegacySquash = () => {
   const [openStory, setOpenStory] = useState(null);
@@ -337,10 +352,9 @@ const LegacySquash = () => {
             key={safeIndex}
             src={safeImages[safeIndex]}
             alt={captions[safeIndex] || 'Squash Gallery'}
-            className={`aq-strip-image${
-              slideDir === 'next' ? ' aq-slide-next' :
+            className={`aq-strip-image${slideDir === 'next' ? ' aq-slide-next' :
               slideDir === 'prev' ? ' aq-slide-prev' : ''
-            }`}
+              }`}
           />
           <div className="aq-strip-caption">
             <span>{captions[safeIndex] || 'Squash'}</span>
@@ -482,7 +496,7 @@ function WaveDivider() {
 function PhotoBreak({ image, caption, tag }) {
   return (
     <Reveal as="div" className="aq-photobreak">
-      <img src={image} alt={caption} className="aq-photobreak-img" />
+      <img src={image} alt={caption} className="aq-photobreak-img" style={typeof imageAlignments[image] === 'string' ? { objectPosition: imageAlignments[image] } : (imageAlignments[image] || {})} />
       <div className="aq-photobreak-caption">
         <span>{tag}</span>
         <span>{caption}</span>
@@ -547,10 +561,10 @@ const galleryImages = [p1, p2, p3, p4, p5, p6, p7, p8];
    SQUASH
 ============================================================ */
 const Squash = () => {
-  const [expandedCard, setExpandedCard]       = useState(null);
-  const [currentIndex, setCurrentIndex]       = useState(0);
-  const [slideDir, setSlideDir]               = useState('next');
-  const timelineWrapRef                       = useRef(null);
+  const [expandedCard, setExpandedCard] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideDir, setSlideDir] = useState('next');
+  const timelineWrapRef = useRef(null);
   const [timelineVisible, setTimelineVisible] = useState(false);
 
   const eventsCount = useCountUp(cards.length, 800);
@@ -656,7 +670,7 @@ const Squash = () => {
           </div>
 
           <div className="aq-hero-photo">
-            <img src={p1} alt="IIT Bombay Squash" />
+            <img src={p1} alt="IIT Bombay Squash" style={typeof imageAlignments[p1] === 'string' ? { objectPosition: imageAlignments[p1] } : (imageAlignments[p1] || {})} />
           </div>
         </Reveal>
 
@@ -679,7 +693,7 @@ const Squash = () => {
             {facilities.map((f, i) => (
               <Reveal as="div" key={f.title} className="aq-facility-card" delay={i * 90}>
                 <div className="aq-facility-photo">
-                  <img src={f.image} alt={f.title} />
+                  <img src={f.image} alt={f.title} style={typeof imageAlignments[f.image] === 'string' ? { objectPosition: imageAlignments[f.image] } : (imageAlignments[f.image] || {})} />
                 </div>
                 <h3 className="aq-facility-title">{f.title}</h3>
                 <ul className="aq-facility-bullets">
@@ -721,7 +735,7 @@ const Squash = () => {
                   aria-expanded={isOpen}
                 >
                   <div className="aq-story-photo">
-                    <img src={galleryImages[index % galleryImages.length]} alt={card.title} />
+                    <img src={galleryImages[index % galleryImages.length]} alt={card.title} style={typeof imageAlignments[galleryImages[index % galleryImages.length]] === 'string' ? { objectPosition: imageAlignments[galleryImages[index % galleryImages.length]] } : (imageAlignments[galleryImages[index % galleryImages.length]] || {})} />
                   </div>
                   <span className="aq-story-no">N&deg;&nbsp;{String(index + 1).padStart(2, '0')}</span>
                   <h3 className="aq-story-title">{card.title}</h3>
@@ -795,6 +809,7 @@ const Squash = () => {
               src={galleryImages[currentIndex]}
               alt={`Squash gallery ${currentIndex + 1}`}
               className={`aq-strip-image aq-slide-${slideDir}`}
+              style={typeof imageAlignments[galleryImages[currentIndex]] === 'string' ? { objectPosition: imageAlignments[galleryImages[currentIndex]] } : (imageAlignments[galleryImages[currentIndex]] || {})}
             />
             <div className="aq-strip-caption">
               <span>

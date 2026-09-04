@@ -9,18 +9,27 @@ import lt5 from './assets/lt5.jpg';
 import lt6 from './assets/lt6.jpg';
 import lt7 from './assets/lt7.jpg';
 import lt8 from './assets/lt8.jpg';
+import lt9 from './assets/lt9.jpg';
 import Timel from './timeline';
 import user from './assets/lt1.jpg';
 import tennisLogo from '../../../Contact/pictures/Logos_for_Photos/tennis.png';
 
 // MASTER ALIGNMENT DICTIONARY
-// First percentage = X-axis (Left/Right). Second percentage = Y-axis (Up/Down).
+// objectPosition: 'X% Y%' -> First percentage = Left/Right (X-axis), Second percentage = Up/Down (Y-axis)
+// transform: 'scale(Z)' -> Zoom scale multiplier
+// transformOrigin: 'OX% OY%' -> Origin pivot point for zoom scale
 const imageAlignments = {
   [lt1]: { objectPosition: '50% 35%', transform: 'scale(1.15)', transformOrigin: '50% 50%' },
   [lt2]: { objectPosition: '50% 40%', transform: 'scale(1.15)', transformOrigin: '50% 50%' },
   [lt3]: { objectPosition: '50% 34%', transform: 'scale(1.15)', transformOrigin: '50% 50%' },
   [lt4]: { objectPosition: '50% 39%', transform: 'scale(1.15)', transformOrigin: '50% 50%' },
   [lt5]: { objectPosition: '5% 53%', transform: 'scale(1.15)', transformOrigin: '5% 50%' },
+  // Newly added Lawn Tennis images
+  [lt6]: { objectPosition: '50% 80%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [lt7]: { objectPosition: '50% 20%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [lt8]: { objectPosition: '50% 41%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  // Top Hero Banner Image
+  [lt9]: { objectPosition: '50% 65%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
 };
 
 /* ============================================================
@@ -95,10 +104,10 @@ function WaveDivider() {
 function PhotoBreak({ image, caption, tag }) {
   return (
     <Reveal as="div" className="aq-photobreak">
-      <img 
-        src={image} 
-        alt={caption} 
-        className="aq-photobreak-img" 
+      <img
+        src={image}
+        alt={caption}
+        className="aq-photobreak-img"
         style={imageAlignments[image] || {}}
       />
       <div className="aq-photobreak-caption">
@@ -172,7 +181,7 @@ const galleryImages = [lt1, lt2, lt3, lt4, lt5, lt6, lt7, lt8];
 const Tennis = () => {
   const [expandedCard, setExpandedCard] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [slideDir, setSlideDir]         = useState('next');
+  const [slideDir, setSlideDir] = useState('next');
 
   const eventsCount = useCountUp(cards.length, 800);
   const courtsCount = useCountUp(6, 800);
@@ -261,10 +270,10 @@ const Tennis = () => {
           </div>
 
           <div className="aq-hero-photo">
-            <img 
-              src={lt3} 
-              alt="IIT Bombay Lawn Tennis" 
-              style={imageAlignments[lt3] || {}}
+            <img
+              src={lt9}
+              alt="IIT Bombay Lawn Tennis Squad"
+              style={imageAlignments[lt9] || {}}
             />
           </div>
         </Reveal>
@@ -288,9 +297,9 @@ const Tennis = () => {
             {facilities.map((f, i) => (
               <Reveal as="div" key={f.title} className="aq-facility-card" delay={i * 90}>
                 <div className="aq-facility-photo">
-                  <img 
-                    src={f.image} 
-                    alt={f.title} 
+                  <img
+                    src={f.image}
+                    alt={f.title}
                     style={imageAlignments[f.image] || {}}
                   />
                 </div>
@@ -373,9 +382,9 @@ const Tennis = () => {
                   aria-expanded={isOpen}
                 >
                   <div className="aq-story-photo">
-                    <img 
-                      src={galleryImages[index % galleryImages.length]} 
-                      alt={card.title} 
+                    <img
+                      src={galleryImages[index % galleryImages.length]}
+                      alt={card.title}
                       style={imageAlignments[galleryImages[index % galleryImages.length]] || {}}
                     />
                   </div>

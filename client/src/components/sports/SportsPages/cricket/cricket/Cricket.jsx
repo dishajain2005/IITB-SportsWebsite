@@ -17,6 +17,25 @@ import cric11 from '../images/cric11.jpg';
 import cricketLogo from '../../../../Contact/pictures/Logos_for_Photos/Cricket.png';
 import param from '../../../../Contact/pictures/Logos_for_Photos/param.JPG';
 import user from '../../../../Contact/pictures/Logos_for_Photos/param.JPG';
+// MASTER ALIGNMENT DICTIONARY
+// objectPosition: 'X% Y%' -> First percentage = Left/Right (X-axis), Second percentage = Up/Down (Y-axis)
+// transform: 'scale(Z)' -> Zoom scale multiplier
+// transformOrigin: 'OX% OY%' -> Origin pivot point for zoom scale
+const imageAlignments = {
+  [cricket1]: { objectPosition: '50% 60%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric1]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric2]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric3]: { objectPosition: '50% 29%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric4]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  // Newly added Cricket images
+  [cric5]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric6]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric7]: { objectPosition: '50% 20%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric8]: { objectPosition: '50% 70%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric9]: { objectPosition: '50% 35%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric10]: { objectPosition: '50% 50%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+  [cric11]: { objectPosition: '50% 40%', transform: 'scale(1.00)', transformOrigin: '50% 50%' },
+};
 
 const LegacyCricket = () => {
   const [openStory, setOpenStory] = useState(null);
@@ -314,10 +333,9 @@ const LegacyCricket = () => {
             key={safeIndex}
             src={safeImages[safeIndex]}
             alt={captions[safeIndex] || 'Cricket Gallery'}
-            className={`aq-strip-image${
-              slideDir === 'next' ? ' aq-slide-next' :
+            className={`aq-strip-image${slideDir === 'next' ? ' aq-slide-next' :
               slideDir === 'prev' ? ' aq-slide-prev' : ''
-            }`}
+              }`}
           />
           <div className="aq-strip-caption">
             <span>{captions[safeIndex] || 'Cricket'}</span>
@@ -385,9 +403,7 @@ const LegacyCricket = () => {
   );
 };
 
-const imageAlignments = {
-  [cric3]: '50% 29%',
-};
+
 
 /* ============================================================
    REVEAL
@@ -463,11 +479,11 @@ function WaveDivider() {
 function PhotoBreak({ image, caption, tag }) {
   return (
     <Reveal as="div" className="aq-photobreak">
-      <img 
-        src={image} 
-        alt={caption} 
-        className="aq-photobreak-img" 
-        style={imageAlignments[image] ? { objectPosition: imageAlignments[image] } : {}}
+      <img
+        src={image}
+        alt={caption}
+        className="aq-photobreak-img"
+        style={typeof imageAlignments[image] === 'string' ? { objectPosition: imageAlignments[image] } : (imageAlignments[image] || {})}
       />
       <div className="aq-photobreak-caption">
         <span>{tag}</span>
@@ -549,13 +565,13 @@ const galleryImages = [cricket1, cric1, cric2, cric3, cric4, cric5, cric6, cric7
    CRICKET
 ============================================================ */
 const Cricket = () => {
-  const [expandedCard, setExpandedCard]       = useState(null);
-  const [currentIndex, setCurrentIndex]       = useState(0);
-  const [slideDir, setSlideDir]               = useState('next');
-  const timelineWrapRef                       = useRef(null);
+  const [expandedCard, setExpandedCard] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideDir, setSlideDir] = useState('next');
+  const timelineWrapRef = useRef(null);
   const [timelineVisible, setTimelineVisible] = useState(false);
 
-  const pitchCount  = useCountUp(4, 800);
+  const pitchCount = useCountUp(4, 800);
   const eventsCount = useCountUp(cards.length, 800);
 
   const toggleContent = (i) => setExpandedCard((prev) => (prev === i ? null : i));
@@ -653,10 +669,10 @@ const Cricket = () => {
           </div>
 
           <div className="aq-hero-photo">
-            <img 
-              src={cricket1} 
-              alt="IIT Bombay Cricket Ground" 
-              style={imageAlignments[cricket1] ? { objectPosition: imageAlignments[cricket1] } : {}}
+            <img
+              src={cricket1}
+              alt="IIT Bombay Cricket Ground"
+              style={typeof imageAlignments[cricket1] === 'string' ? { objectPosition: imageAlignments[cricket1] } : (imageAlignments[cricket1] || {})}
             />
           </div>
         </Reveal>
@@ -680,10 +696,10 @@ const Cricket = () => {
             {facilities.map((f, i) => (
               <Reveal as="div" key={f.title} className="aq-facility-card" delay={i * 90}>
                 <div className="aq-facility-photo">
-                  <img 
-                    src={f.image} 
-                    alt={f.title} 
-                    style={imageAlignments[f.image] ? { objectPosition: imageAlignments[f.image] } : {}}
+                  <img
+                    src={f.image}
+                    alt={f.title}
+                    style={typeof imageAlignments[f.image] === 'string' ? { objectPosition: imageAlignments[f.image] } : (imageAlignments[f.image] || {})}
                   />
                 </div>
                 <h3 className="aq-facility-title">{f.title}</h3>
@@ -726,10 +742,10 @@ const Cricket = () => {
                   aria-expanded={isOpen}
                 >
                   <div className="aq-story-photo">
-                    <img 
-                      src={galleryImages[index % galleryImages.length]} 
-                      alt={card.title} 
-                      style={imageAlignments[galleryImages[index % galleryImages.length]] ? { objectPosition: imageAlignments[galleryImages[index % galleryImages.length]] } : {}}
+                    <img
+                      src={galleryImages[index % galleryImages.length]}
+                      alt={card.title}
+                      style={typeof imageAlignments[galleryImages[index % galleryImages.length]] === 'string' ? { objectPosition: imageAlignments[galleryImages[index % galleryImages.length]] } : (imageAlignments[galleryImages[index % galleryImages.length]] || {})}
                     />
                   </div>
                   <span className="aq-story-no">N&deg;&nbsp;{String(index + 1).padStart(2, '0')}</span>
@@ -804,7 +820,7 @@ const Cricket = () => {
               src={galleryImages[currentIndex]}
               alt={`Cricket gallery ${currentIndex + 1}`}
               className={`aq-strip-image aq-slide-${slideDir}`}
-              style={imageAlignments[galleryImages[currentIndex]] ? { objectPosition: imageAlignments[galleryImages[currentIndex]] } : {}}
+              style={typeof imageAlignments[galleryImages[currentIndex]] === 'string' ? { objectPosition: imageAlignments[galleryImages[currentIndex]] } : (imageAlignments[galleryImages[currentIndex]] || {})}
             />
             <div className="aq-strip-caption">
               <span>
