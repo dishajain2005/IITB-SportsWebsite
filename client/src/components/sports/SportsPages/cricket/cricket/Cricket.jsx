@@ -7,6 +7,13 @@ import cric1 from '../images/cric1.jpg';
 import cric2 from '../images/cric2.jpg';
 import cric3 from '../images/cric3.jpg';
 import cric4 from '../images/cric4.jpg';
+import cric5 from '../images/cric5.jpg';
+import cric6 from '../images/cric6.jpg';
+import cric7 from '../images/cric7.jpg';
+import cric8 from '../images/cric8.jpg';
+import cric9 from '../images/cric9.jpg';
+import cric10 from '../images/cric10.jpg';
+import cric11 from '../images/cric11.jpg';
 import cricketLogo from '../../../../Contact/pictures/Logos_for_Photos/Cricket.png';
 import param from '../../../../Contact/pictures/Logos_for_Photos/param.JPG';
 import user from '../../../../Contact/pictures/Logos_for_Photos/param.JPG';
@@ -536,7 +543,7 @@ const cards = [
   },
 ];
 
-const galleryImages = [cricket1, cric1, cric2, cric3, cric4];
+const galleryImages = [cricket1, cric1, cric2, cric3, cric4, cric5, cric6, cric7, cric8, cric9, cric10, cric11];
 
 /* ============================================================
    CRICKET

@@ -8,6 +8,9 @@ import p3 from '../assets/p3.jpg';
 import p4 from '../assets/p4.jpg';
 import p5 from '../assets/p5.jpg';
 import p6 from '../assets/p6.jpg';
+import p7 from '../assets/p7.jpeg';
+import p8 from '../assets/p8.jpeg';
+import p9 from '../assets/p9.jpeg';
 import user from '../../../../Contact/pictures/Logos_for_Photos/Khushal.jpg';
 
 // Updated to use the scale trick to allow X-axis panning
@@ -179,7 +182,7 @@ const cards = [
   },
 ];
 
-const galleryImages = [p1, p2, p3, p4, p5, p6];
+const galleryImages = [p1, p2, p3, p4, p5, p6, p7, p8, p9];
 
 /* ============================================================
    HOCKEY

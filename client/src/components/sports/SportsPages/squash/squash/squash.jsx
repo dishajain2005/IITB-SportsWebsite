@@ -7,6 +7,9 @@ import p2 from '../assets/squash2.jpg';
 import p3 from '../assets/squash3.jpg';
 import p4 from '../assets/squash4.jpg';
 import p5 from '../assets/squash5.jpg';
+import p6 from '../assets/p6.jpeg';
+import p7 from '../assets/p7.jpeg';
+import p8 from '../assets/p8.jpeg';
 import user from '../assets/user.jpg';
 import squashLogo from '../../../../Contact/pictures/Logos_for_Photos/squash.png';
 
@@ -538,7 +541,7 @@ const cards = [
   },
 ];
 
-const galleryImages = [p1, p2, p3, p4, p5];
+const galleryImages = [p1, p2, p3, p4, p5, p6, p7, p8];
 
 /* ============================================================
    SQUASH

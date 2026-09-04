@@ -6,6 +6,9 @@ import lt2 from './assets/lt2.jpg';
 import lt3 from './assets/lt3.jpg';
 import lt4 from './assets/lt4.jpg';
 import lt5 from './assets/lt5.jpg';
+import lt6 from './assets/lt6.jpg';
+import lt7 from './assets/lt7.jpg';
+import lt8 from './assets/lt8.jpg';
 import Timel from './timeline';
 import user from './assets/lt1.jpg';
 import tennisLogo from '../../../Contact/pictures/Logos_for_Photos/tennis.png';
@@ -161,7 +164,7 @@ const cards = [
   },
 ];
 
-const galleryImages = [lt1, lt2, lt3, lt4, lt5];
+const galleryImages = [lt1, lt2, lt3, lt4, lt5, lt6, lt7, lt8];
 
 /* ============================================================
    TENNIS
