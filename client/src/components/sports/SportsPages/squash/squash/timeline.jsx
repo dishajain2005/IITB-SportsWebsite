@@ -16,7 +16,7 @@ const Timel = () => {
                 date='2025' contentStyle={{ background: '#2F2B77', color: '#fff' }}>
                     <h3 style={{color: '#E4E2FA'}}>Inter IIT Sports Meet</h3>
                     <p style={{color: '#E4E2FA'}}>
-                        Girls: Silver
+                        Girls: Bronze
                     </p>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement className="vertical-timeline-element--education"
