@@ -53,6 +53,7 @@ function Reveal({ as: Tag = 'div', className = '', delay = 0, children, ...rest 
   }, []);
   return (
     <Tag ref={ref} className={`aq-reveal ${visible ? 'is-visible' : ''} ${className}`} style={{ '--d': `${delay}ms` }} {...rest}>
+      {children}
     </Tag>
   );
 }
