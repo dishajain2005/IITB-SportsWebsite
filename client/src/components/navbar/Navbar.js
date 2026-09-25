@@ -9,6 +9,7 @@ const links = [
   { to: '/explore', label: 'Sports' },
   { to: '/CourtStatus', label: 'Court Status' },
   { to: '/GC', label: 'GC' },
+  { to: '/inter-iit', label: 'Inter IIT' },
   { to: '/yearbook', label: 'Yearbook' },
   // { to: '/blogs', label: 'Blogs' },
   { to: '/events-timeline', label: 'Events Timeline' },

@@ -51,6 +51,8 @@ import DeanDashboard         from "./components/AdminPanel/DeanDashboard";
 import SuperadminDashboard   from "./components/AdminPanel/SuperadminDashboard";
 import BatchDetail           from "./components/AdminPanel/BatchDetail";
 import GcAdmin               from "./components/Gc/GcAdmin";
+import InterIIT              from "./components/interiit/InterIIT";
+import InterIITAdmin         from "./components/interiit/InterIITAdmin";
 
 function App() {
   // Use a root basename during local development so the homepage renders at localhost,
@@ -108,6 +110,8 @@ function App() {
             <Route path="/certificates" element={<CertificatesPage />} />
             <Route path="/certificate-verification/:certId" element={<VerificationPage />} /> 
             <Route path="/gc-admin" element={<GcAdmin />} />
+            <Route path="/inter-iit" element={<InterIIT />} />
+            <Route path="/inter-iit-admin" element={<InterIITAdmin />} />
             {/* Admin panel — not linked anywhere */}
             <Route path="/certificate-admin-gssa-0000"         element={<AdminLogin />} />
             <Route path="/certificate-admin-chairperson-1542"  element={<AdminLogin />} />

@@ -1,411 +1,1375 @@
-/* Paragraph spacing */
-p {
-  margin-bottom: 1.5rem;
+/* ==========================================================================
+   INTER IIT PAGE STYLES — Elite Athletic / Broadcast Dossier Design
+   ========================================================================== */
+
+:root {
+  --iit-dark-bg: #090d16;
+  --iit-card-bg: rgba(16, 23, 38, 0.75);
+  --iit-card-border: rgba(255, 255, 255, 0.08);
+  --iit-card-hover: rgba(26, 38, 64, 0.9);
+  --iit-accent-cyan: #00d2ff;
+  --iit-accent-orange: #ff5722;
+  --iit-accent-gold: #f59e0b;
+  --iit-accent-green: #10b981;
+  --iit-text-main: #f8fafc;
+  --iit-text-muted: #94a3b8;
+  --iit-font-mono: "JetBrains Mono", "Courier New", monospace;
 }
 
-/* Improved content spacing */
-.InterIITMeet-container {
-  text-align: justify;
-  max-width: 1400px;
-  margin: 3.5rem auto 1.5rem;
-  padding: 0 1rem;
-}.achievements-heading, 
-.meet-heading, 
-.pyq_heading, 
-.history h2 {
-  color: rgb(255, 255, 255);
-  font-size: 45px;
-  margin: 2.5rem 0 1.5rem;
-  font-weight: bolder;
-  display: flex;
-  align-items: center;
-}/* Base Reset with box-sizing inheritance */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-body, html {
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
-
-/* Main Container */
-.interiit-container {
-  background-color: rgb(2, 2, 62);
+.inter-iit-root {
+  position: relative;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 0 6% 4rem;
-  max-width: 100%;
+  background-color: var(--iit-dark-bg);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255, 87, 34, 0.06) 0%, transparent 40%);
+  color: var(--iit-text-main);
+  padding-bottom: 5rem;
   overflow-x: hidden;
 }
 
-/* Header Section */
-.gradient-heading {
-  font-size: 4.5rem;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  background-image: linear-gradient(43deg, #c3b5f2 12%, rgb(235, 228, 159) 20%, #3e9df0 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  font-weight: bolder;
-  margin: 6rem auto 2rem;
+.inter-iit-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* BACKGROUND GLOW BLOBS */
+.inter-iit-glow {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+.glow-cyan {
+  top: 50px;
+  left: -100px;
+  background: var(--iit-accent-cyan);
+}
+
+.glow-orange {
+  top: 300px;
+  right: -100px;
+  background: var(--iit-accent-orange);
+}
+
+/* HERO SECTION */
+.inter-iit-hero {
+  position: relative;
+  z-index: 1;
+  padding: 3.5rem 0 2rem;
   text-align: center;
-  line-height: 1.2;
 }
 
-.logo-container {
-  display: flex;
-  justify-content: center;
+.inter-iit-hero-badge {
+  display: inline-flex;
   align-items: center;
-  margin: 2rem 0;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 8px;
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  margin-bottom: 1.25rem;
 }
 
-.logo1 {
-  max-width: 400px;
-  height: auto;
+.badge-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--iit-accent-cyan);
+  box-shadow: 0 0 10px var(--iit-accent-cyan);
+  animation: pulse-glow 2s infinite ease-in-out;
 }
 
-/* Text Content */
-.description, 
-.Event-Description, 
-.extra p, 
-.history p {
-  font-size: 25px;
-  color: white;
-  text-align: justify;
-  letter-spacing: 0.5px;
-  max-width: 1400px;
-  margin: 2rem auto;
-  line-height: 1.7;
-  padding: 0 1rem;
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
 }
 
-/* Section Containers */
-.achievements-container, 
-.InterIITMeet-container {
-  text-align: justify;
-  max-width: 1400px;
-  margin: 3rem auto 1.5rem;
-  padding: 0 1rem;
+.badge-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--iit-accent-cyan);
+  text-transform: uppercase;
 }
 
-/* Headings */
-.Performance {
-  color: rgb(255, 255, 255);
-  font-size: 45px;
-  margin: 3rem 0 1.5rem;
-  font-weight: bolder;
-  display: flex;
-  align-items: center;
-  border-bottom: 2px solid rgba(62, 157, 240, 0.4);
-  padding-bottom: 0.5rem;
-}
-
-/* Lists */
-.achievements-list, 
-.performance1 {
-  list-style-type: circle;
-  color: white;
-  font-size: 25px;
-  line-height: 1.7;
-  padding-left: 2.5rem;
-  margin: 1.5rem 0;
-}
-
-.achievements-list li, 
-.performance1 li {
+.inter-iit-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin-bottom: 1rem;
-  position: relative;
-  padding-left: 0.5rem;
 }
 
-/* Enhanced styling for performance list specifically */
-.performance1 {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 1.5rem 2.5rem;
-  margin: 1.5rem 1rem 2.5rem 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 20%, var(--iit-accent-cyan) 60%, var(--iit-accent-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.performance1 li {
-  position: relative;
-  padding-left: 0.5rem;
+.inter-iit-subtitle {
+  font-size: 1.1rem;
+  color: var(--iit-text-muted);
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
 }
 
-.performance1 li::marker {
-  color: #3e9df0;
+/* AQUATICS CALLOUT BANNER */
+.inter-iit-aquatics-banner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: linear-gradient(90deg, rgba(0, 210, 255, 0.15) 0%, rgba(26, 38, 64, 0.8) 100%);
+  border: 1px solid rgba(0, 210, 255, 0.35);
+  border-radius: 14px;
+  padding: 1.2rem 1.75rem;
+  margin: 0 auto 2.25rem;
+  max-width: 960px;
+  text-align: left;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* List Image */
-.list-image {
-  max-width: 400px;
-  height: auto;
-  float: right;
-  margin: 0 0 1.5rem 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+.banner-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 87, 34, 0.2);
+  border: 1px solid rgba(255, 87, 34, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-/* Gallery */
-.gallery-container {
+.banner-flame-icon {
+  color: var(--iit-accent-orange);
+  animation: flame-flicker 1.8s infinite alternate;
+}
+
+@keyframes flame-flicker {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15) rotate(5deg); }
+}
+
+.banner-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 3rem auto;
-  width: 100%;
-  max-width: 1400px;
+  gap: 4px;
 }
 
-.gallery-heading {
-  font-size: 24px;
-  margin-bottom: 1.5rem;
+.banner-content strong {
+  font-size: 1.05rem;
   color: #fff;
-  text-align: center;
+  letter-spacing: -0.01em;
 }
 
-.gallery-image-container {
-  width: 100%;
+.banner-content span {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.banner-cta {
+  background: var(--iit-accent-cyan);
+  color: #04121f;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.banner-cta:hover {
+  background: #38e1ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+
+/* STATS BAR */
+.inter-iit-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  position: relative;
+  background: var(--iit-card-bg);
+  border: 1px solid var(--iit-card-border);
+  border-radius: 12px;
+  padding: 1.1rem 1.4rem;
   display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+.stat-item:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  background: var(--iit-card-hover);
+}
+
+.stat-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon-wrap.stream {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.stat-icon-wrap.schedule {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+}
+
+.stat-icon-wrap.result {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.stat-text {
+  text-align: left;
+}
+
+.stat-num {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--iit-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.live-indicator-pill {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 9999px;
+  padding: 2px 7px;
+  letter-spacing: 0.08em;
+  animation: pulse-glow 1.5s infinite;
+}
+
+/* SPORTS SELECTOR CAROUSEL */
+.inter-iit-sports-nav-section {
+  position: relative;
+  z-index: 2;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(9, 13, 22, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.sports-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.sports-nav-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--iit-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.reset-sport-btn {
+  background: none;
+  border: none;
+  color: var(--iit-accent-cyan);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.reset-sport-btn:hover {
+  text-decoration: underline;
+}
+
+.sports-pills-carousel {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.sports-pills-carousel::-webkit-scrollbar {
+  height: 4px;
+}
+
+.sports-pills-carousel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.sport-pill {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: #cbd5e1;
+  border-radius: 9999px;
+  padding: 7px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.2s ease;
+}
+
+.sport-pill:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.sport-pill.active {
+  background: var(--iit-accent-cyan);
+  color: #04121f;
+  border-color: var(--iit-accent-cyan);
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.35);
+}
+
+.sport-pill.is-featured {
+  border-color: rgba(0, 210, 255, 0.4);
+}
+
+.pill-tag {
+  background: rgba(255, 87, 34, 0.3);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.flame-dot {
+  font-size: 0.95rem;
+}
+
+/* MAIN SECTION CONTROLS BAR */
+.inter-iit-main-section {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 0;
+}
+
+.inter-iit-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
-.gallery-image {
-  max-width: 90%;
-  height: auto;
-  max-height: 500px;
-  border-radius: 8px;
-  object-fit: contain;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+/* 3 MAIN TABS */
+.inter-iit-main-tabs {
+  display: inline-flex;
+  background: rgba(16, 23, 38, 0.85);
+  border: 1px solid var(--iit-card-border);
+  border-radius: 12px;
+  padding: 5px;
+  gap: 4px;
 }
 
-.gallery-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-button {
-  padding: 0.75rem 1.5rem;
-  background-color: #007bff;
-  color: white;
+.main-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-/* Glimpses Section */
-.glimpses-container {
-  text-align: center;
-  margin: 4rem auto;
-  color: white;
-  font-weight: bold;
-  width: 100%;
-  max-width: 1400px;
-}
-
-.glimpses-container h2 {
-  font-size: 30px;
-  margin-bottom: 2rem;
-}
-
-.photos {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin: 2rem 0;
-}
-
-.glimpses-container img {
-  width: 400px;
-  height: auto;
+  color: var(--iit-text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 18px;
   border-radius: 8px;
-  max-width: 100%;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
-.glimpses-container img:hover {
-  transform: scale(1.02);
+.main-tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-/* Links Section */
-.last_heading h2 {
-  text-align: center;
-  color: aqua;
-  margin: 3rem 0 1.5rem;
+.main-tab.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.links {
+.tab-live-badge {
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  animation: pulse-glow 1.5s infinite;
+}
+
+.tab-count-badge {
+  background: rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 9999px;
+}
+
+/* CATEGORY CHIPS & SEARCH */
+.inter-iit-filter-group {
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin: 2rem 0 4rem;
+  align-items: center;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
-.links a {
-  text-decoration: none;
-  color: #ffffff;
+.category-chips {
+  display: inline-flex;
+  background: rgba(16, 23, 38, 0.6);
+  border: 1px solid var(--iit-card-border);
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.category-chip {
+  background: none;
+  border: none;
+  color: var(--iit-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.category-chip.active {
+  background: rgba(0, 210, 255, 0.15);
+  color: var(--iit-accent-cyan);
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(16, 23, 38, 0.6);
+  border: 1px solid var(--iit-card-border);
+  border-radius: 8px;
+  padding: 0 12px;
+}
+
+.search-icon {
+  color: var(--iit-text-muted);
+  margin-right: 8px;
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 8px 0;
+  width: 190px;
+}
+
+.search-box input::placeholder {
+  color: #64748b;
+}
+
+.search-clear-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.search-clear-btn:hover {
+  color: #fff;
+}
+
+/* ACTIVE DISCIPLINE NOTICE */
+.active-discipline-notice {
+  font-size: 0.82rem;
+  color: var(--iit-text-muted);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.03em;
+}
+
+.active-discipline-notice strong {
+  color: #e2e8f0;
+}
+
+/* EMPTY STATE */
+.inter-iit-empty-state {
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+  background: var(--iit-card-bg);
+  border: 1px dashed var(--iit-card-border);
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.empty-icon-wrap {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--iit-text-muted);
+}
+
+.inter-iit-empty-state h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.inter-iit-empty-state p {
+  color: var(--iit-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.empty-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.empty-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.empty-btn.primary {
+  background: var(--iit-accent-cyan);
+  color: #04121f;
+}
+
+.empty-btn.outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   TAB 1: LIVE STREAMING LAYOUT
+   ========================================================================== */
+.live-streaming-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.featured-stream-panel {
+  background: var(--iit-card-bg);
+  border: 1px solid var(--iit-card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.player-aspect-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  background: #000;
+}
+
+.youtube-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.iframe-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.2s ease;
+  justify-content: center;
+  color: #64748b;
+  gap: 12px;
+}
+
+.featured-stream-meta {
+  padding: 1.75rem;
+}
+
+.meta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.meta-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-pill {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-pill.live {
+  background: rgba(239, 68, 68, 0.18);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.status-pill.upcoming {
+  background: rgba(59, 130, 246, 0.18);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.status-pill.ended {
+  background: rgba(100, 116, 139, 0.18);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+.red-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: pulse-glow 1.2s infinite;
+}
+
+.sport-pill-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.yt-direct-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--iit-accent-cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.yt-direct-link:hover {
+  text-decoration: underline;
+}
+
+.featured-stream-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+.featured-stream-teams {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
   padding: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-.links a:hover {
-  transform: translateY(-5px);
+.team-pill-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.links a p {
-  margin-top: 0.75rem;
+.team-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(0, 210, 255, 0.15);
+  color: var(--iit-accent-cyan);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  padding: 4px 8px;
+  border-radius: 6px;
 }
 
-/* Icons */
-.arrow {
-  margin-right: 1rem;
-  font-size: 2rem;
-  color: #3e9df0;
+.team-fullname {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f1f5f9;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .gradient-heading {
-    font-size: 3.5rem;
-    margin-top: 5rem;
-  }
+.vs-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.1em;
 }
 
+.featured-stream-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  color: var(--iit-text-muted);
+}
+
+.detail-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.featured-stream-desc {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* STREAMS SIDEBAR */
+.streams-sidebar {
+  background: var(--iit-card-bg);
+  border: 1px solid var(--iit-card-border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  backdrop-filter: blur(12px);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.badge-counter {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  padding: 2px 7px;
+  border-radius: 9999px;
+}
+
+.streams-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.stream-card-item {
+  display: flex;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.stream-card-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.stream-card-item.is-active {
+  background: rgba(0, 210, 255, 0.1);
+  border-color: var(--iit-accent-cyan);
+}
+
+.stream-thumb-wrap {
+  position: relative;
+  width: 105px;
+  height: 68px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+  flex-shrink: 0;
+}
+
+.stream-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+}
+
+.thumb-status-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.thumb-status-badge.live {
+  background: #ef4444;
+  color: #fff;
+}
+
+.thumb-status-badge.upcoming {
+  background: rgba(0, 0, 0, 0.7);
+  color: #60a5fa;
+}
+
+.thumb-status-badge.ended {
+  background: rgba(0, 0, 0, 0.7);
+  color: #94a3b8;
+}
+
+.mini-pulse {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  margin-right: 3px;
+  animation: pulse-glow 1s infinite;
+}
+
+.stream-info-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.stream-sport-line {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--iit-accent-cyan);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.stream-item-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.25;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.stream-timing-line {
+  font-size: 0.72rem;
+  color: var(--iit-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================================================
+   TAB 2: SCHEDULES GRID
+   ========================================================================== */
+.schedules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.25rem;
+}
+
+.schedule-card {
+  background: var(--iit-card-bg);
+  border: 1px solid var(--iit-card-border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.schedule-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  background: var(--iit-card-hover);
+}
+
+.schedule-card.accent-border {
+  border-left: 3px solid var(--iit-accent-cyan);
+}
+
+.schedule-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-sport-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.sport-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(0, 210, 255, 0.15);
+  color: var(--iit-accent-cyan);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.category-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.stage-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--iit-accent-gold);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.schedule-status-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.schedule-status-pill.scheduled {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.schedule-status-pill.in_progress {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.schedule-status-pill.completed {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.schedule-card-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.schedule-teams-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.team-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.team-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 210, 255, 0.2);
+  color: var(--iit-accent-cyan);
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-name-text {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.vs-sign {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.schedule-meta-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: var(--iit-text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 10px;
+}
+
+.meta-col {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.venue-col {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   TAB 3: RESULTS GRID
+   ========================================================================== */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.25rem;
+}
+
+.result-card {
+  background: var(--iit-card-bg);
+  border: 1px solid var(--iit-card-border);
+  border-radius: 14px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--iit-card-hover);
+}
+
+.result-card.gold-theme {
+  border-left: 3px solid #f59e0b;
+}
+
+.result-card.silver-theme {
+  border-left: 3px solid #94a3b8;
+}
+
+.result-card.bronze-theme {
+  border-left: 3px solid #b45309;
+}
+
+.result-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.position-medal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--iit-accent-gold);
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 3px 8px;
+  border-radius: 9999px;
+}
+
+.result-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.result-score-block {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.result-team-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-team-row .team-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.result-team-row .team-name.is-winner {
+  color: #fff;
+  font-weight: 800;
+}
+
+.winner-icon {
+  color: var(--iit-accent-green);
+}
+
+.result-team-row .team-score {
+  font-family: var(--iit-font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.result-summary-box {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.83rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.result-card-footer {
+  display: flex;
+  gap: 14px;
+  font-size: 0.78rem;
+  color: var(--iit-text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 10px;
+}
+
+.result-footer-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ADMIN SHORTCUT LINK */
+.admin-shortcut-area {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+.admin-shortcut-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.2s;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.admin-shortcut-link:hover {
+  color: var(--iit-accent-cyan);
+  border-color: var(--iit-accent-cyan);
+  background: rgba(0, 210, 255, 0.05);
+}
+
+/* ==========================================================================
+   RESPONSIVE QUERIES
+   ========================================================================== */
 @media (max-width: 992px) {
-  .list-image {
-    float: none;
-    margin: 1.5rem auto 2rem;
-    display: block;
-    max-width: 350px;
+  .live-streaming-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .streams-sidebar {
+    max-height: 400px;
+  }
+
+  .inter-iit-stats-bar {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .interiit-container {
-    padding: 0 4% 2rem;
+  .inter-iit-hero {
+    padding: 2rem 0 1.5rem;
   }
-  
-  .gradient-heading {
-    font-size: 3rem;
-    margin-top: 4rem;
-  }
-  
-  .logo1 {
-    max-width: 300px;
-  }
-  
-  .description, 
-  .Event-Description, 
-  .achievements-list, 
-  .performance1, 
-  .extra p, 
-  .history p {
-    font-size: 20px;
-  }
-  
-  .achievements-heading, 
-  .meet-heading, 
-  .Performance, 
-  .pyq_heading, 
-  .history h2 {
-    font-size: 35px;
-  }
-  
-  .arrow {
-    font-size: 1.75rem;
-  }
-  
-  .glimpses-container img {
-    width: 320px;
-  }
-  
-  .performance1 {
-    padding: 1.25rem 1.5rem;
-  }
-}
 
-@media (max-width: 576px) {
-  .interiit-container {
-    padding: 0 3% 1.5rem;
+  .inter-iit-aquatics-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .banner-cta {
+    align-self: flex-start;
+  }
+
+  .inter-iit-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inter-iit-main-tabs {
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .main-tab {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .inter-iit-filter-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
     width: 100%;
   }
-  
-  .gradient-heading {
-    font-size: 2.5rem;
-    margin-top: 3rem;
-    padding: 0 0.5rem;
+
+  .search-box input {
+    width: 100%;
   }
-  
-  .logo1 {
-    max-width: 220px;
-  }
-  
-  .description, 
-  .Event-Description, 
-  .achievements-list, 
-  .performance1, 
-  .extra p, 
-  .history p {
-    font-size: 18px;
-    letter-spacing: normal;
-  }
-  
-  .achievements-heading, 
-  .meet-heading, 
-  .Performance, 
-  .pyq_heading, 
-  .history h2 {
-    font-size: 28px;
-    letter-spacing: normal;
-  }
-  
-  .arrow {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-  }
-  
-  .gallery-buttons {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .gallery-heading {
-    font-size: 1.5rem;
-  }
-  
-  .glimpses-container img {
-    width: 250px;
-  }
-  
-  .links {
-    gap: 2rem;
-  }
-  
-  .performance1 {
-    padding: 1rem;
-    margin: 1rem 0 2rem;
-  }
-  
-  .performance1 li {
-    margin-bottom: 0.75rem;
+
+  .schedules-grid,
+  .results-grid {
+    grid-template-columns: 1fr;
   }
 }
