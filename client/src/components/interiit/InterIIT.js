@@ -188,16 +188,15 @@ export default function InterIIT() {
 
   return (
     <div className="inter-iit-root">
-      {/* BACKGROUND ACCENT BLOBS */}
-      <div className="inter-iit-glow glow-cyan" />
-      <div className="inter-iit-glow glow-orange" />
-
       {/* HERO SECTION */}
       <section className="inter-iit-hero">
         <div className="inter-iit-container">
-          <div className="inter-iit-hero-badge">
-            <span className="badge-pulse" />
-            <span className="badge-text">{meetConfig.meetTitle || "INTER IIT SPORTS MEET 2026"}</span>
+          <div className="inter-iit-hero-kicker">
+            <span className="vol">{meetConfig.meetTitle || "57TH INTER IIT SPORTS MEET"}</span>
+            <span className="sep">§</span>
+            <span>Official Contingent Dossier</span>
+            <span className="sep">§</span>
+            <span>IIT Bombay</span>
           </div>
 
           <h1 className="inter-iit-title">
@@ -434,9 +433,9 @@ export default function InterIIT() {
                             src={`https://www.youtube.com/embed/${
                               currentStream.youtubeId ||
                               extractYouTubeId(currentStream.youtubeUrl)
-                            }?autoplay=1&rel=0`}
+                            }?autoplay=0&rel=0`}
                             title={currentStream.title}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
                             className="youtube-iframe"
                           />

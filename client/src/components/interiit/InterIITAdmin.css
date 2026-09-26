@@ -17,10 +17,34 @@
 
 .inter-admin-root {
   min-height: 100vh;
-  background-color: var(--ink);
+  background-color: #000000;
+  background: #000000;
   color: var(--cream);
-  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
   padding-bottom: 5rem;
+}
+
+.inter-admin-root,
+.inter-admin-root p,
+.inter-admin-root span,
+.inter-admin-root li,
+.inter-admin-root label,
+.inter-admin-root a,
+.inter-admin-root button,
+.inter-admin-root input,
+.inter-admin-root textarea,
+.inter-admin-root select,
+.inter-admin-root small,
+.inter-admin-root strong,
+.inter-admin-root div {
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.inter-admin-root h1,
+.inter-admin-root h2,
+.inter-admin-root h3,
+.inter-admin-root h4 {
+  font-family: 'Fraunces', serif !important;
 }
 
 .inter-admin-container {

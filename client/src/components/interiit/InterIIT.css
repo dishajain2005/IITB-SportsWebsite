@@ -35,44 +35,69 @@
 .inter-iit-root {
   position: relative;
   min-height: 100vh;
-  background-color: var(--ink);
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.07) 0%, transparent 45%),
-    radial-gradient(circle at 90% 80%, rgba(30, 64, 175, 0.08) 0%, transparent 45%);
+  background-color: #000000;
+  background: #000000;
   color: var(--cream);
-  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   padding-bottom: 5rem;
   overflow-x: hidden;
+}
+
+/* GLOBAL TYPOGRAPHY OVERRIDES - ELIMINATE ROBOTO */
+.inter-iit-root,
+.inter-iit-root p,
+.inter-iit-root span,
+.inter-iit-root li,
+.inter-iit-root label,
+.inter-iit-root a,
+.inter-iit-root button,
+.inter-iit-root input,
+.inter-iit-root textarea,
+.inter-iit-root select,
+.inter-iit-root small,
+.inter-iit-root strong,
+.inter-iit-root div {
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+.inter-iit-root h1,
+.inter-iit-root h2,
+.inter-iit-root h3,
+.inter-iit-root h4,
+.inter-iit-root .inter-iit-title,
+.inter-iit-root .stat-num,
+.inter-iit-root .featured-stream-title,
+.inter-iit-root .schedule-card-title,
+.inter-iit-root .result-card-title,
+.inter-iit-root .sidebar-header h3,
+.inter-iit-root .inter-iit-empty-state h3 {
+  font-family: 'Fraunces', serif !important;
+}
+
+.inter-iit-root .inter-iit-hero-kicker,
+.inter-iit-root .inter-iit-hero-kicker *,
+.inter-iit-root [class*="mono"],
+.inter-iit-root .stat-label,
+.inter-iit-root .sports-nav-title,
+.inter-iit-root .sport-tag,
+.inter-iit-root .status-pill,
+.inter-iit-root .team-badge,
+.inter-iit-root .vs-label,
+.inter-iit-root .vs-sign,
+.inter-iit-root .badge-counter,
+.inter-iit-root .stream-sport-line,
+.inter-iit-root .schedule-status-pill,
+.inter-iit-root .position-medal-badge,
+.inter-iit-root .tab-live-badge,
+.inter-iit-root .tab-count-badge,
+.inter-iit-root .live-indicator-pill {
+  font-family: 'JetBrains Mono', monospace !important;
 }
 
 .inter-iit-container {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 1.5rem;
-}
-
-/* BACKGROUND GLOW BLOBS */
-.inter-iit-glow {
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  border-radius: 50%;
-  filter: blur(120px);
-  pointer-events: none;
-  opacity: 0.2;
-  z-index: 0;
-}
-
-.glow-cyan {
-  top: 50px;
-  left: -100px;
-  background: var(--primary-light);
-}
-
-.glow-orange {
-  top: 300px;
-  right: -100px;
-  background: var(--primary);
 }
 
 /* HERO SECTION */
@@ -83,38 +108,27 @@
   text-align: center;
 }
 
-.inter-iit-hero-badge {
+.inter-iit-hero-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  border-radius: 9999px;
-  padding: 6px 16px;
-  margin-bottom: 1.25rem;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 0.32em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
 }
 
-.badge-pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--primary-light);
-  box-shadow: 0 0 10px var(--primary-light);
-  animation: pulse-glow 2s infinite ease-in-out;
+.inter-iit-hero-kicker .vol {
+  color: var(--cream) !important;
+  font-weight: 600 !important;
 }
 
-@keyframes pulse-glow {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
-}
-
-.badge-text {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: var(--cream);
-  text-transform: uppercase;
+.inter-iit-hero-kicker .sep {
+  color: var(--primary-light) !important;
 }
 
 .inter-iit-title {
