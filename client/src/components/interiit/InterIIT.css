@@ -143,15 +143,8 @@
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: 0.02em;
-  color: var(--cream);
+  color: var(--cream) !important;
   margin-bottom: 1rem;
-}
-
-.gradient-text {
-  font-family: var(--heading-font) !important;
-  background: linear-gradient(135deg, var(--cream) 20%, var(--primary-light) 65%, #ff5722 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .inter-iit-subtitle {

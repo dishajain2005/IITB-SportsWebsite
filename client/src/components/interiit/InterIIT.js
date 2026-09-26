@@ -200,7 +200,7 @@ export default function InterIIT() {
           </div>
 
           <h1 className="inter-iit-title">
-            The Arena of <span className="gradient-text">Champions</span>
+            The Arena of Champions
           </h1>
 
           <p className="inter-iit-subtitle">
