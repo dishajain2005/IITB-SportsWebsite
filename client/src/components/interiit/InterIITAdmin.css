@@ -1,12 +1,25 @@
 /* ==========================================================================
-   INTER IIT ADMIN PANEL STYLES
+   INTER IIT ADMIN PANEL STYLES — Broadsheet Aligned Palette
    ========================================================================== */
+
+:root {
+  --cream: #f4f1ea;
+  --muted: #9aa3b2;
+  --muted-2: #6b7382;
+  --primary-light: #3b82f6;
+  --primary: #1e40af;
+  --ink: #06080c;
+  --panel: #11161f;
+  --panel-2: #0a0d13;
+  --rule: rgba(255, 255, 255, 0.10);
+  --rule-strong: rgba(255, 255, 255, 0.22);
+}
 
 .inter-admin-root {
   min-height: 100vh;
-  background-color: #0b0f19;
-  color: #f1f5f9;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--ink);
+  color: var(--cream);
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   padding-bottom: 5rem;
 }
 
@@ -22,15 +35,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 50%, #151f33 0%, #080c14 100%);
+  background: radial-gradient(circle at 50% 50%, #151f33 0%, var(--ink) 100%);
   padding: 1.5rem;
 }
 
 .inter-admin-login-card {
   width: 100%;
   max-width: 420px;
-  background: rgba(19, 27, 46, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--panel);
+  border: 1px solid var(--rule);
   border-radius: 16px;
   padding: 2.5rem;
   text-align: center;
@@ -42,25 +55,26 @@
   width: 64px;
   height: 64px;
   border-radius: 16px;
-  background: rgba(0, 210, 255, 0.12);
-  border: 1px solid rgba(0, 210, 255, 0.3);
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
-  color: #00d2ff;
+  color: var(--primary-light);
 }
 
 .inter-admin-login-card h2 {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--cream);
   margin-bottom: 0.5rem;
 }
 
 .inter-admin-login-card p {
   font-size: 0.88rem;
-  color: #94a3b8;
+  color: var(--muted);
   margin-bottom: 1.75rem;
   line-height: 1.5;
 }
@@ -68,9 +82,9 @@
 .admin-input-field {
   width: 100%;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--rule);
   border-radius: 10px;
-  color: #fff;
+  color: var(--cream);
   padding: 12px 16px;
   font-size: 0.95rem;
   margin-bottom: 1rem;
@@ -80,7 +94,7 @@
 }
 
 .admin-input-field:focus {
-  border-color: #00d2ff;
+  border-color: var(--primary-light);
 }
 
 .login-error-msg {
@@ -91,7 +105,7 @@
 
 .admin-submit-btn {
   width: 100%;
-  background: #00d2ff;
+  background: var(--primary-light);
   color: #04121f;
   font-weight: 700;
   font-size: 0.95rem;
@@ -103,8 +117,8 @@
 }
 
 .admin-submit-btn:hover {
-  background: #33dcff;
-  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+  background: #60a5fa;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
 
 .login-back-link {
@@ -116,19 +130,19 @@
   align-items: center;
   gap: 6px;
   font-size: 0.82rem;
-  color: #64748b;
+  color: var(--muted);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .login-back-link a:hover {
-  color: #cbd5e1;
+  color: var(--cream);
 }
 
 /* HEADER */
 .inter-admin-header {
-  background: #111827;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--rule);
   padding: 1.25rem 0;
 }
 
@@ -147,19 +161,20 @@
 }
 
 .brand-shield {
-  color: #00d2ff;
+  color: var(--primary-light);
 }
 
 .admin-brand h1 {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--cream);
   margin: 0;
 }
 
 .admin-brand p {
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0;
 }
 
@@ -185,23 +200,23 @@
 
 .outline-btn {
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #cbd5e1;
+  border: 1px solid var(--rule);
+  color: var(--muted);
 }
 
 .outline-btn:hover {
   background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  color: var(--cream);
 }
 
 .seed-btn {
-  background: rgba(0, 210, 255, 0.12);
-  color: #00d2ff;
-  border: 1px solid rgba(0, 210, 255, 0.3);
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--cream);
+  border: 1px solid rgba(59, 130, 246, 0.35);
 }
 
 .seed-btn:hover {
-  background: rgba(0, 210, 255, 0.22);
+  background: rgba(59, 130, 246, 0.25);
 }
 
 .logout-btn {
@@ -216,8 +231,8 @@
 
 /* NAV BAR & TABS */
 .inter-admin-nav-bar {
-  background: #0f172a;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--ink);
+  border-bottom: 1px solid var(--rule);
   padding: 0.75rem 0;
 }
 
@@ -237,7 +252,7 @@
 .admin-nav-tab {
   background: none;
   border: none;
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 0.88rem;
   font-weight: 600;
   padding: 8px 16px;
@@ -250,27 +265,27 @@
 }
 
 .admin-nav-tab:hover {
-  color: #fff;
+  color: var(--cream);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .admin-nav-tab.active {
   background: rgba(255, 255, 255, 0.1);
-  color: #00d2ff;
+  color: var(--cream);
 }
 
 .admin-sport-filter {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #94a3b8;
+  color: var(--muted);
   font-size: 0.85rem;
 }
 
 .admin-sport-filter select {
-  background: #1e293b;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #fff;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  color: var(--cream);
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -290,8 +305,8 @@
 }
 
 .admin-panel-card {
-  background: #131b2e;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--panel);
+  border: 1px solid var(--rule);
   border-radius: 14px;
   padding: 1.5rem;
 }
@@ -299,13 +314,14 @@
 .panel-title-row {
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--rule);
 }
 
 .panel-title-row h2 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--cream);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -326,20 +342,21 @@
 }
 
 .form-group label {
-  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  background: #1e293b;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
   border-radius: 8px;
-  color: #fff;
+  color: var(--cream);
   padding: 9px 12px;
   font-size: 0.88rem;
   outline: none;
@@ -350,12 +367,12 @@
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #00d2ff;
+  border-color: var(--primary-light);
 }
 
 .help-text {
   font-size: 0.72rem;
-  color: #64748b;
+  color: var(--muted-2);
 }
 
 .form-grid-2 {
@@ -385,12 +402,12 @@
 }
 
 .admin-action-btn.primary {
-  background: #00d2ff;
+  background: var(--primary-light);
   color: #04121f;
 }
 
 .admin-action-btn.primary:hover {
-  background: #33dcff;
+  background: #60a5fa;
 }
 
 /* ITEMS LIST */
@@ -405,7 +422,7 @@
 
 .admin-item-card {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--rule);
   border-radius: 10px;
   padding: 1rem;
   display: flex;
@@ -427,10 +444,11 @@
 }
 
 .sport-badge {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   font-weight: 700;
-  background: rgba(0, 210, 255, 0.15);
-  color: #00d2ff;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--primary-light);
   padding: 2px 6px;
   border-radius: 4px;
 }
@@ -439,7 +457,7 @@
   font-size: 0.7rem;
   font-weight: 600;
   background: rgba(255, 255, 255, 0.08);
-  color: #cbd5e1;
+  color: var(--cream);
   padding: 2px 6px;
   border-radius: 4px;
 }
@@ -454,6 +472,7 @@
 }
 
 .position-pill {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   font-weight: 700;
   background: rgba(245, 158, 11, 0.2);
@@ -463,6 +482,7 @@
 }
 
 .status-selector {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   font-weight: 700;
   padding: 2px 6px;
@@ -486,7 +506,7 @@
 
 .status-selector.ended {
   background: rgba(100, 116, 139, 0.2);
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .status-selector.scheduled {
@@ -512,7 +532,7 @@
 .action-icon-btn {
   background: none;
   border: none;
-  color: #64748b;
+  color: var(--muted-2);
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
@@ -520,7 +540,7 @@
 }
 
 .action-icon-btn.edit:hover {
-  color: #00d2ff;
+  color: var(--primary-light);
 }
 
 .action-icon-btn.delete:hover {
@@ -528,9 +548,10 @@
 }
 
 .item-card-title {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--cream);
   line-height: 1.3;
   margin: 0;
 }
@@ -540,7 +561,7 @@
 }
 
 .yt-preview-link {
-  color: #00d2ff;
+  color: var(--primary-light);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -556,12 +577,13 @@
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: #cbd5e1;
+  color: var(--cream);
 }
 
 .schedule-versus-row strong {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
-  color: #64748b;
+  color: var(--muted-2);
 }
 
 .result-scores-preview {
@@ -580,12 +602,12 @@
 }
 
 .result-scores-preview strong {
-  color: #00d2ff;
+  color: var(--cream);
 }
 
 .item-summary-note {
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--muted);
   margin: 0;
 }
 
@@ -593,15 +615,15 @@
   display: flex;
   justify-content: space-between;
   font-size: 0.75rem;
-  color: #64748b;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--muted-2);
+  border-top: 1px solid var(--rule);
   padding-top: 6px;
 }
 
 .admin-empty-table {
   padding: 3rem;
   text-align: center;
-  color: #64748b;
+  color: var(--muted-2);
   font-size: 0.9rem;
 }
 
@@ -653,8 +675,8 @@
 .admin-modal-box {
   width: 100%;
   max-width: 520px;
-  background: #131b2e;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--panel);
+  border: 1px solid var(--rule-strong);
   border-radius: 16px;
   padding: 1.75rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
@@ -665,26 +687,27 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--rule);
   padding-bottom: 0.75rem;
 }
 
 .modal-header h3 {
-  font-size: 1.1rem;
-  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  color: var(--cream);
   margin: 0;
 }
 
 .modal-close-btn {
   background: none;
   border: none;
-  color: #64748b;
+  color: var(--muted-2);
   cursor: pointer;
   padding: 4px;
 }
 
 .modal-close-btn:hover {
-  color: #fff;
+  color: var(--cream);
 }
 
 .modal-actions {
