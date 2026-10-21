@@ -1320,3 +1320,79 @@
 .pggc-footer a:hover {
   text-decoration: underline;
 }
+
+/* ============================================================
+   AWAITING FIXTURES / BLANK STATE STYLING
+============================================================ */
+.pggc-hud-blank {
+  background: linear-gradient(145deg, #0d121c 0%, #06090e 100%);
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.pggc-blank-state-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pggc-blank-state-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--panel-2);
+  border: 1px solid var(--rule-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-light);
+  margin-bottom: 16px;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.pggc-blank-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 450;
+  color: var(--cream);
+  margin: 0 0 10px;
+}
+
+.pggc-blank-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+
+.pggc-blank-tags {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.pggc-sport-empty-box {
+  padding: 32px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  font-family: 'Inter Tight', sans-serif;
+  line-height: 1.6;
+}
+
+.pggc-sport-empty-box strong {
+  color: var(--cream);
+}
+
