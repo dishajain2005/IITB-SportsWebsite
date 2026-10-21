@@ -205,7 +205,7 @@ export default function PGGC() {
           <div className="pggc-masthead-meta">
             <span><strong>IIT Bombay</strong> · Powai</span>
             <span>Est. <strong>1958</strong></span>
-            <span>Academic Season <strong>2024–25</strong></span>
+            <span>Academic Season <strong>2026–27</strong></span>
           </div>
         </header>
 

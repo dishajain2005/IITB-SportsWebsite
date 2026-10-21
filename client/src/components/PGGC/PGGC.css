@@ -7,6 +7,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 .pggc-root {
+  --heading-font: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  --body-font: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   --void: #05070b;
   --ink: #070a10;
   --paper: #0b1018;
@@ -284,10 +286,12 @@
   margin-bottom: 6px;
 }
 
+.pggc-root .pggc-hero-stat-card .value,
+.pggc-hero-stat-card span.value,
 .pggc-hero-stat-card .value {
   display: block;
   font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-  font-size: 32px;
+  font-size: clamp(24px, 2.5vw, 32px);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--cream);
@@ -295,7 +299,7 @@
 }
 
 .pggc-hero-stat-card .sub {
-  font-family: var(--body-font), 'Roboto', 'Inter Tight', sans-serif !important;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-size: 11px;
   color: var(--muted);
   margin-top: 5px;
