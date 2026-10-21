@@ -7,29 +7,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 .pggc-root {
-  --void: #000000;
-  --ink: #06080c;
-  --paper: #0b0f16;
-  --panel: #11161f;
-  --panel-2: #0a0d13;
-  --panel-card: #131924;
-  --panel-card-hover: #192130;
-  --rule: rgba(255, 255, 255, 0.10);
-  --rule-strong: rgba(255, 255, 255, 0.22);
-  --primary: #1e40af;
-  --primary-light: #3b82f6;
-  --primary-deep: #0b1e63;
-  --accent: #ffffff;
-  --cream: #f4f1ea;
-  --muted: #9aa3b2;
-  --muted-2: #6b7382;
-  --gold: #f59e0b;
-  --gold-glow: rgba(245, 158, 11, 0.25);
-  --silver: #d6d9de;
-  --bronze: #d97706;
+  --void: #05070b;
+  --ink: #070a10;
+  --paper: #0b1018;
+  --panel: #0f1523;
+  --panel-2: #090e17;
+  --panel-card: #131b2c;
+  --panel-card-hover: #172238;
+  --rule: rgba(255, 255, 255, 0.08);
+  --rule-strong: rgba(255, 255, 255, 0.16);
+  --primary: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-deep: #1d4ed8;
+  --accent: #f8fafc;
+  --cream: #f1f5f9;
+  --muted: #94a3b8;
+  --muted-2: #64748b;
+  --gold: #d4af37;
+  --gold-glow: rgba(212, 175, 55, 0.18);
+  --gold-bg: rgba(212, 175, 55, 0.10);
+  --gold-border: rgba(212, 175, 55, 0.35);
+  --silver: #cbd5e1;
+  --silver-glow: rgba(203, 213, 225, 0.15);
+  --silver-bg: rgba(203, 213, 225, 0.08);
+  --silver-border: rgba(203, 213, 225, 0.28);
+  --bronze: #cd7f32;
+  --bronze-glow: rgba(205, 127, 50, 0.18);
+  --bronze-bg: rgba(205, 127, 50, 0.10);
+  --bronze-border: rgba(205, 127, 50, 0.35);
   --live-red: #ef4444;
-  --live-green: #22c55e;
-  --shadow-1: 0 24px 80px rgba(0, 0, 0, 0.55);
+  --live-green: #10b981;
+  --shadow-1: 0 24px 80px rgba(0, 0, 0, 0.65);
 
   position: relative;
   min-height: 100vh;
@@ -206,11 +214,11 @@
 }
 
 .pggc-hero-title {
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: clamp(34px, 4.8vw, 62px);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--cream);
   margin: 0 0 16px;
 }
@@ -278,10 +286,10 @@
 
 .pggc-hero-stat-card .value {
   display: block;
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif !important;
-  font-size: 34px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--cream);
   line-height: 1.1;
 }
@@ -426,9 +434,10 @@
 }
 
 .pggc-section-title {
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: clamp(26px, 3.2vw, 36px);
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--cream);
   margin: 0 0 6px;
 }
@@ -781,23 +790,25 @@
 .pggc-podium-card.rank-1 {
   order: 2;
   min-height: 250px;
-  background: linear-gradient(180deg, rgba(245, 158, 11, 0.12) 0%, var(--panel) 100%);
-  border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: 0 12px 36px rgba(245, 158, 11, 0.15);
+  background: linear-gradient(180deg, var(--gold-bg) 0%, var(--panel) 100%);
+  border: 1px solid var(--gold-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 24px var(--gold-glow);
 }
 
 .pggc-podium-card.rank-2 {
   order: 1;
   min-height: 220px;
-  background: linear-gradient(180deg, rgba(214, 217, 222, 0.08) 0%, var(--panel) 100%);
-  border-color: rgba(214, 217, 222, 0.35);
+  background: linear-gradient(180deg, var(--silver-bg) 0%, var(--panel) 100%);
+  border: 1px solid var(--silver-border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .pggc-podium-card.rank-3 {
   order: 3;
   min-height: 200px;
-  background: linear-gradient(180deg, rgba(217, 119, 6, 0.08) 0%, var(--panel) 100%);
-  border-color: rgba(217, 119, 6, 0.35);
+  background: linear-gradient(180deg, var(--bronze-bg) 0%, var(--panel) 100%);
+  border: 1px solid var(--bronze-border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .pggc-podium-top {
@@ -823,9 +834,10 @@
 .rank-3 .pggc-podium-crown { color: var(--bronze); }
 
 .pggc-podium-dept-name {
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: #fff;
   line-height: 1.25;
   margin: 0 0 12px;
@@ -901,9 +913,10 @@
 
 .pggc-table-header h3 {
   margin: 0;
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: var(--cream);
 }
 
@@ -948,7 +961,7 @@
 }
 
 .pggc-table tr.is-selected-dept {
-  background: rgba(59, 130, 246, 0.12);
+  background: rgba(37, 99, 235, 0.12);
   border-left: 3px solid var(--primary-light);
 }
 
@@ -999,6 +1012,60 @@
   color: var(--cream);
 }
 
+/* Standings Table Medals Group & Tally Chips */
+.pggc-table-medals-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pggc-tally-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--muted-2);
+  min-width: 32px;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.pggc-tally-chip .chip-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+}
+
+.pggc-tally-chip .chip-val {
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.pggc-tally-chip.gold.has-medal {
+  background: var(--gold-bg);
+  border-color: var(--gold-border);
+  color: var(--gold);
+}
+
+.pggc-tally-chip.silver.has-medal {
+  background: var(--silver-bg);
+  border-color: var(--silver-border);
+  color: var(--silver);
+}
+
+.pggc-tally-chip.bronze.has-medal {
+  background: var(--bronze-bg);
+  border-color: var(--bronze-border);
+  color: var(--bronze);
+}
+
 /* Department Dossier Card (Right Column) */
 .pggc-dossier-card {
   background: var(--panel);
@@ -1020,9 +1087,10 @@
 }
 
 .pggc-dossier-title {
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 700;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: #fff;
   margin: 0 0 10px;
   line-height: 1.25;
@@ -1039,7 +1107,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .pggc-dossier-stat-box {
@@ -1056,13 +1124,75 @@
   font-size: 10px;
   color: var(--muted-2);
   text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .pggc-dossier-stat-box .v {
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif !important;
-  font-size: 24px;
-  font-weight: 700;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--cream);
+}
+
+/* Dossier Medals Bar */
+.pggc-dossier-medals-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pggc-dossier-medal-col {
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 10px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.pggc-dossier-medal-col .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-2);
+}
+
+.pggc-dossier-medal-col .num {
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--cream);
+  line-height: 1;
+}
+
+.pggc-dossier-medal-col.gold {
+  border-color: var(--gold-border);
+  background: linear-gradient(180deg, var(--gold-bg) 0%, var(--panel-2) 100%);
+}
+.pggc-dossier-medal-col.gold .num {
+  color: var(--gold);
+}
+
+.pggc-dossier-medal-col.silver {
+  border-color: var(--silver-border);
+  background: linear-gradient(180deg, var(--silver-bg) 0%, var(--panel-2) 100%);
+}
+.pggc-dossier-medal-col.silver .num {
+  color: var(--silver);
+}
+
+.pggc-dossier-medal-col.bronze {
+  border-color: var(--bronze-border);
+  background: linear-gradient(180deg, var(--bronze-bg) 0%, var(--panel-2) 100%);
+}
+.pggc-dossier-medal-col.bronze .num {
+  color: var(--bronze);
 }
 
 .pggc-dossier-sports-list {
@@ -1262,7 +1392,7 @@
 }
 
 .pggc-dept-card-name {
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
@@ -1358,7 +1488,7 @@
 }
 
 .pggc-blank-title {
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 22px;
   font-weight: 700;
   color: var(--cream);
@@ -1439,7 +1569,7 @@
 }
 
 .pggc-season-progress-ribbon {
-  background: linear-gradient(90deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.7) 100%);
+  background: var(--panel);
   border: 1px solid var(--rule);
   border-radius: 6px;
   padding: 12px 16px;
@@ -1452,7 +1582,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
 }
@@ -1467,22 +1597,23 @@
 
 .pggc-progress-meta {
   color: var(--muted-2);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .pggc-progress-track {
   width: 100%;
-  height: 6px;
+  height: 4px;
   background: var(--panel-2);
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
 }
 
 .pggc-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #60a5fa, #fbbf24);
-  border-radius: 3px;
+  background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+  border-radius: 2px;
   transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
 }
 
 /* Concluded GCs grid */
@@ -1531,8 +1662,10 @@
 }
 
 .pggc-concluded-sport-title {
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: #fff;
   margin: 0 0 4px;
 }
@@ -1543,10 +1676,10 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--primary-light);
-  background: rgba(59, 130, 246, 0.12);
+  background: rgba(37, 99, 235, 0.12);
   padding: 2px 8px;
   border-radius: 10px;
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  border: 1px solid rgba(37, 99, 235, 0.25);
 }
 
 .pggc-concluded-podium-stack {
@@ -1567,17 +1700,74 @@
   font-size: 13px;
 }
 
-.pggc-concluded-podium-row.gold {
-  color: var(--gold);
-  font-weight: 600;
+.pggc-concluded-dept-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.pggc-concluded-podium-row.silver {
+.pggc-podium-place-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  text-transform: uppercase;
+}
+
+.pggc-podium-place-badge.gold {
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+}
+
+.pggc-podium-place-badge.silver {
+  background: var(--silver-bg);
+  border: 1px solid var(--silver-border);
   color: var(--silver);
 }
 
-.pggc-concluded-podium-row.bronze {
+.pggc-podium-place-badge.bronze {
+  background: var(--bronze-bg);
+  border: 1px solid var(--bronze-border);
   color: var(--bronze);
+}
+
+.pggc-concluded-podium-row .pggc-dept-name {
+  font-weight: 600;
+  color: var(--cream);
+  font-size: 13px;
+}
+
+.pggc-pts-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--rule);
+}
+
+.pggc-pts-chip.gold {
+  color: var(--gold);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.pggc-pts-chip.silver {
+  color: var(--silver);
+  border-color: rgba(203, 213, 225, 0.25);
+}
+
+.pggc-pts-chip.bronze {
+  color: var(--bronze);
+  border-color: rgba(205, 127, 50, 0.3);
 }
 
 .pggc-concluded-desc {
@@ -1628,8 +1818,9 @@
 }
 
 .pggc-upcoming-card-title {
-  font-family: var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
+  font-weight: 700;
   color: var(--cream);
   margin: 0 0 4px;
 }

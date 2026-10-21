@@ -379,16 +379,25 @@ export default function PGGC() {
 
                     <div className="pggc-concluded-podium-stack">
                       <div className="pggc-concluded-podium-row gold">
-                        <span>🥇 {gc.gold}</span>
-                        <span>+{gc.goldPoints} pts</span>
+                        <div className="pggc-concluded-dept-info">
+                          <span className="pggc-podium-place-badge gold">1st</span>
+                          <span className="pggc-dept-name">{gc.gold}</span>
+                        </div>
+                        <span className="pggc-pts-chip gold">+{gc.goldPoints} pts</span>
                       </div>
                       <div className="pggc-concluded-podium-row silver">
-                        <span>🥈 {gc.silver}</span>
-                        <span>+{gc.silverPoints} pts</span>
+                        <div className="pggc-concluded-dept-info">
+                          <span className="pggc-podium-place-badge silver">2nd</span>
+                          <span className="pggc-dept-name">{gc.silver}</span>
+                        </div>
+                        <span className="pggc-pts-chip silver">+{gc.silverPoints} pts</span>
                       </div>
                       <div className="pggc-concluded-podium-row bronze">
-                        <span>🥉 {gc.bronze}</span>
-                        <span>+{gc.bronzePoints} pts</span>
+                        <div className="pggc-concluded-dept-info">
+                          <span className="pggc-podium-place-badge bronze">3rd</span>
+                          <span className="pggc-dept-name">{gc.bronze}</span>
+                        </div>
+                        <span className="pggc-pts-chip bronze">+{gc.bronzePoints} pts</span>
                       </div>
                     </div>
 
@@ -644,9 +653,18 @@ export default function PGGC() {
                 </div>
               </div>
               <div className="pggc-podium-medals-tally">
-                <span>🥇 {podium[1]?.gold !== null && podium[1]?.gold !== undefined ? podium[1].gold : "—"}</span>
-                <span>🥈 {podium[1]?.silver !== null && podium[1]?.silver !== undefined ? podium[1].silver : "—"}</span>
-                <span>🥉 {podium[1]?.bronze !== null && podium[1]?.bronze !== undefined ? podium[1].bronze : "—"}</span>
+                <span className="pggc-tally-chip gold has-medal">
+                  <span className="chip-tag">G</span>
+                  <span className="chip-val">{podium[1]?.gold ?? 0}</span>
+                </span>
+                <span className="pggc-tally-chip silver has-medal">
+                  <span className="chip-tag">S</span>
+                  <span className="chip-val">{podium[1]?.silver ?? 0}</span>
+                </span>
+                <span className="pggc-tally-chip bronze has-medal">
+                  <span className="chip-tag">B</span>
+                  <span className="chip-val">{podium[1]?.bronze ?? 0}</span>
+                </span>
               </div>
             </div>
 
@@ -667,9 +685,18 @@ export default function PGGC() {
                 </div>
               </div>
               <div className="pggc-podium-medals-tally">
-                <span>🥇 {podium[0]?.gold !== null && podium[0]?.gold !== undefined ? podium[0].gold : "—"}</span>
-                <span>🥈 {podium[0]?.silver !== null && podium[0]?.silver !== undefined ? podium[0].silver : "—"}</span>
-                <span>🥉 {podium[0]?.bronze !== null && podium[0]?.bronze !== undefined ? podium[0].bronze : "—"}</span>
+                <span className="pggc-tally-chip gold has-medal">
+                  <span className="chip-tag">G</span>
+                  <span className="chip-val">{podium[0]?.gold ?? 0}</span>
+                </span>
+                <span className="pggc-tally-chip silver has-medal">
+                  <span className="chip-tag">S</span>
+                  <span className="chip-val">{podium[0]?.silver ?? 0}</span>
+                </span>
+                <span className="pggc-tally-chip bronze has-medal">
+                  <span className="chip-tag">B</span>
+                  <span className="chip-val">{podium[0]?.bronze ?? 0}</span>
+                </span>
               </div>
             </div>
 
@@ -690,9 +717,18 @@ export default function PGGC() {
                 </div>
               </div>
               <div className="pggc-podium-medals-tally">
-                <span>🥇 {podium[2]?.gold !== null && podium[2]?.gold !== undefined ? podium[2].gold : "—"}</span>
-                <span>🥈 {podium[2]?.silver !== null && podium[2]?.silver !== undefined ? podium[2].silver : "—"}</span>
-                <span>🥉 {podium[2]?.bronze !== null && podium[2]?.bronze !== undefined ? podium[2].bronze : "—"}</span>
+                <span className="pggc-tally-chip gold has-medal">
+                  <span className="chip-tag">G</span>
+                  <span className="chip-val">{podium[2]?.gold ?? 0}</span>
+                </span>
+                <span className="pggc-tally-chip silver has-medal">
+                  <span className="chip-tag">S</span>
+                  <span className="chip-val">{podium[2]?.silver ?? 0}</span>
+                </span>
+                <span className="pggc-tally-chip bronze has-medal">
+                  <span className="chip-tag">B</span>
+                  <span className="chip-val">{podium[2]?.bronze ?? 0}</span>
+                </span>
               </div>
             </div>
           </div>
@@ -769,10 +805,25 @@ export default function PGGC() {
                               </span>
                             </div>
                           </td>
-                          <td style={{ textAlign: "center", fontSize: "11px", color: "var(--muted)" }}>
-                            {dept.gold !== null && dept.gold !== undefined
-                              ? `🥇${dept.gold} 🥈${dept.silver} 🥉${dept.bronze}`
-                              : "—"}
+                          <td style={{ textAlign: "center" }}>
+                            {dept.points !== null && dept.points !== undefined ? (
+                              <div className="pggc-table-medals-group">
+                                <span className={`pggc-tally-chip gold ${dept.gold > 0 ? "has-medal" : ""}`} title="Gold">
+                                  <span className="chip-tag">G</span>
+                                  <span className="chip-val">{dept.gold || 0}</span>
+                                </span>
+                                <span className={`pggc-tally-chip silver ${dept.silver > 0 ? "has-medal" : ""}`} title="Silver">
+                                  <span className="chip-tag">S</span>
+                                  <span className="chip-val">{dept.silver || 0}</span>
+                                </span>
+                                <span className={`pggc-tally-chip bronze ${dept.bronze > 0 ? "has-medal" : ""}`} title="Bronze">
+                                  <span className="chip-tag">B</span>
+                                  <span className="chip-val">{dept.bronze || 0}</span>
+                                </span>
+                              </div>
+                            ) : (
+                              <span style={{ color: "var(--muted-2)" }}>—</span>
+                            )}
                           </td>
                           <td className="pggc-points-cell">
                             {dept.points !== null && dept.points !== undefined ? dept.points : "—"}
@@ -807,10 +858,19 @@ export default function PGGC() {
                 </div>
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-around", padding: "10px", background: "var(--panel-2)", borderRadius: "4px", fontSize: "12px", marginBottom: "16px" }}>
-                <span>🥇 Gold: <strong>{selectedDeptStanding.gold}</strong></span>
-                <span>🥈 Silver: <strong>{selectedDeptStanding.silver}</strong></span>
-                <span>🥉 Bronze: <strong>{selectedDeptStanding.bronze}</strong></span>
+              <div className="pggc-dossier-medals-bar">
+                <div className="pggc-dossier-medal-col gold">
+                  <span className="label">Gold</span>
+                  <span className="num">{selectedDeptStanding.gold !== "—" ? selectedDeptStanding.gold : 0}</span>
+                </div>
+                <div className="pggc-dossier-medal-col silver">
+                  <span className="label">Silver</span>
+                  <span className="num">{selectedDeptStanding.silver !== "—" ? selectedDeptStanding.silver : 0}</span>
+                </div>
+                <div className="pggc-dossier-medal-col bronze">
+                  <span className="label">Bronze</span>
+                  <span className="num">{selectedDeptStanding.bronze !== "—" ? selectedDeptStanding.bronze : 0}</span>
+                </div>
               </div>
 
               <div style={{ fontSize: "11px", fontFamily: "JetBrains Mono, monospace", color: "var(--muted-2)", textTransform: "uppercase", marginBottom: "8px" }}>
@@ -870,7 +930,7 @@ export default function PGGC() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid var(--rule)", paddingBottom: "12px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <Flame size={20} color="var(--primary-light)" />
-                <h3 style={{ margin: 0, fontFamily: "var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif", fontSize: "20px", color: "#fff" }}>
+                <h3 style={{ margin: 0, fontFamily: "'Inter Tight', 'Inter', -apple-system, sans-serif", fontSize: "18px", fontWeight: "700", color: "#fff" }}>
                   {selectedSport} Tournament Results
                 </h3>
               </div>
@@ -1028,7 +1088,7 @@ export default function PGGC() {
             <em>Indian Institute of Technology Bombay · PGGC</em>
           </div>
           <div>
-            Set in HighSchoolUsaSans, Roboto &amp; JetBrains Mono &nbsp;·&nbsp;{" "}
+            Inter Tight, JetBrains Mono &nbsp;·&nbsp;{" "}
             <Link to="/gc-admin">GC Admin Scorekeeper Portal</Link>
           </div>
           <div style={{ color: "var(--muted-2)", fontSize: "10px" }}>
