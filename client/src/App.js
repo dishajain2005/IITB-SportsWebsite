@@ -80,6 +80,7 @@ function App() {
             <Route path="/CourtStatus" element={<CourtStatus/>} />
             <Route path="/turfbooking" element={<BookingPage/>} />
             <Route path="/GC" element={<GC/>} />
+            <Route path="/gc" element={<GC/>} />
             <Route path="/pggc" element={<PGGC />} />
             <Route path="/PGGC" element={<PGGC />} />
             <Route path="/admin-turf-booking-raj" element={<AdminPage/>} />

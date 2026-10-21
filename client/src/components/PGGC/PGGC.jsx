@@ -23,6 +23,7 @@ import {
   DEFAULT_STANDINGS,
   DEFAULT_SPORTS_DATA,
   DEFAULT_MATCHES,
+  CONCLUDED_GCS,
 } from "./pggcData";
 
 export default function PGGC() {
@@ -31,19 +32,20 @@ export default function PGGC() {
 
   // Search and Sort
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState("alpha"); // default to alphabetical since points are pending
+  const [sortBy, setSortBy] = useState("points"); // default to points ranking
 
   // Selected Department for deep-dive dossier
-  const [selectedDeptName, setSelectedDeptName] = useState(
-    "Aerospace Engineering"
-  );
+  const [selectedDeptName, setSelectedDeptName] = useState("Civil");
 
   // Selected Sport for disciplines matrix
-  const [selectedSport, setSelectedSport] = useState("Cricket");
+  const [selectedSport, setSelectedSport] = useState("Table Tennis (Boys)");
 
   // Selected Match for HUD spotlight
   const [selectedMatchId, setSelectedMatchId] = useState("");
   const [isCommentaryOpen, setIsCommentaryOpen] = useState(true);
+
+  // Live Section View Tab: 'concluded' | 'spotlight' | 'upcoming'
+  const [liveTab, setLiveTab] = useState("concluded");
 
   // Live Data State (Synced with Firebase if node exists)
   const [standingsState, setStandingsState] = useState(DEFAULT_STANDINGS);
@@ -187,12 +189,9 @@ export default function PGGC() {
         </div>
         <div className="pggc-dispatch-meta">
           <span>
-            Active Match:{" "}
-            <strong>
-              {spotlightMatch ? `${spotlightMatch.sport} (${spotlightMatch.stage})` : "Awaiting Fixtures"}
-            </strong>
+            GCs Concluded: <strong>{CONCLUDED_GCS.length} Completed</strong>
           </span>
-          <span>Departments: <strong>17 Contesting</strong></span>
+          <span>Departments: <strong>{DEPARTMENTS.length} Contesting</strong></span>
         </div>
       </div>
 
@@ -201,7 +200,7 @@ export default function PGGC() {
         <header className="pggc-masthead">
           <div className="pggc-masthead-mark">
             <span className="crest">PG</span>
-            <span>Post-Graduate General Championship · Vol. LXVI</span>
+            <span>PGGC · Vol. LXVI</span>
           </div>
           <div className="pggc-masthead-meta">
             <span><strong>IIT Bombay</strong> · Powai</span>
@@ -215,18 +214,14 @@ export default function PGGC() {
           <div className="pggc-hero-kicker">
             <span>Issue § PG-66</span>
             <span className="sep">·</span>
-            <span>The Inter-Departmental Crucible</span>
+            <span>The Inter-Departmental Arena</span>
           </div>
 
           <div className="pggc-hero-layout">
             <div>
-              <h1 className="pggc-hero-title">
-                The <span className="italic">Post-Graduate</span>
-                <br />
-                Departmental <span className="highlight">Championship</span>.
-              </h1>
+              <h1 className="pggc-hero-title">PGGC</h1>
               <p className="pggc-hero-lede">
-                Seventeen departments across engineering, sciences, design, and management.
+                Twenty-nine departments and centres across engineering, sciences, design, and management.
                 From lab benches to the floodlit arenas of Gymkhana — one department hovers
                 above all to hoist the coveted PGGC rolling trophy.
               </p>
@@ -235,25 +230,23 @@ export default function PGGC() {
             <div className="pggc-hero-stats-grid">
               <div className="pggc-hero-stat-card">
                 <span className="label">Departments</span>
-                <span className="value">17</span>
+                <span className="value">{DEPARTMENTS.length}</span>
                 <span className="sub">Engineering, Science & Design</span>
               </div>
               <div className="pggc-hero-stat-card">
                 <span className="label">Disciplines</span>
-                <span className="value">{sportsKeys.length || 14}</span>
+                <span className="value">{sportsKeys.length}</span>
                 <span className="sub">Indoor & Outdoor Arenas</span>
               </div>
               <div className="pggc-hero-stat-card">
-                <span className="label">Trophy</span>
-                <span className="value">PGGC</span>
-                <span className="sub">Rolling Championship Shield</span>
+                <span className="label">GCs Completed</span>
+                <span className="value">{CONCLUDED_GCS.length}</span>
+                <span className="sub">6 of {sportsKeys.length} Concluded</span>
               </div>
               <div className="pggc-hero-stat-card">
-                <span className="label">Live Fixtures</span>
-                <span className="value">
-                  {matchesList.filter((m) => m.status === "live").length}
-                </span>
-                <span className="sub">Awaiting Tournament Start</span>
+                <span className="label">Championship Leader</span>
+                <span className="value">{currentStandings[0]?.name || "Civil"}</span>
+                <span className="sub">{currentStandings[0]?.points || 30} Total Points</span>
               </div>
             </div>
           </div>
@@ -304,171 +297,314 @@ export default function PGGC() {
           </div>
         </div>
 
-        {/* 5. CENTERSTAGE: LIVE MATCH SCORECARD HUD (Different from UGGC) */}
-        <section className="pggc-live-center">
+        {/* 5. CENTERSTAGE: LIVE MATCH SCORECARD HUD & CONCLUDED GCS */}
+        <section className="pggc-live-center" id="live-arena">
           <div className="pggc-section-header">
             <div className="pggc-eyebrow">
               <span className="num">§ 01</span>
               <span>·</span>
-              <span>Live Match Arena & Play-by-Play Scorecard</span>
+              <span>Live Match Arena &amp; GC Tournament Tracker</span>
               <span className="bar" />
             </div>
-            <h2 className="pggc-section-title">
-              Match <span className="italic">Spotlight</span>.
-            </h2>
-            <p className="pggc-section-sub">
-              Real-time score updates, live sets/overs, and court commentary direct from Powai.
-            </p>
-          </div>
-
-          {spotlightMatch ? (
-            <div className="pggc-arena-grid">
-              {/* Left: Spotlight Match HUD */}
-              <div className="pggc-featured-hud">
-                <div className="pggc-hud-badge-bar">
-                  <span className={`pggc-status-pill ${spotlightMatch.status}`}>
-                    {spotlightMatch.status === "live" && <span className="pggc-live-dot" />}
-                    {spotlightMatch.status}
-                  </span>
-
-                  <div className="pggc-hud-sport-title">
-                    <Flame size={15} color="var(--primary-light)" />
-                    <span>{spotlightMatch.sport}</span>
-                    <span className="pggc-hud-stage">· {spotlightMatch.stage}</span>
-                  </div>
-                </div>
-
-                {/* Faceoff */}
-                <div className="pggc-faceoff">
-                  <div className="pggc-team-pane">
-                    <span className="pggc-team-emblem">
-                      {getDeptInitials(spotlightMatch.teamA)}
-                    </span>
-                    <div className="pggc-team-name-lg">{spotlightMatch.teamA}</div>
-                    <div className="pggc-team-score-num">{spotlightMatch.scoreA}</div>
-                  </div>
-
-                  <div className="pggc-score-vs-divider">
-                    <span className="pggc-vs-badge">VS</span>
-                  </div>
-
-                  <div className="pggc-team-pane align-right">
-                    <span className="pggc-team-emblem">
-                      {getDeptInitials(spotlightMatch.teamB)}
-                    </span>
-                    <div className="pggc-team-name-lg">{spotlightMatch.teamB}</div>
-                    <div className="pggc-team-score-num">{spotlightMatch.scoreB}</div>
-                  </div>
-                </div>
-
-                {/* Venue & Clock */}
-                <div className="pggc-hud-meta-bar">
-                  <span>
-                    <MapPin size={13} color="var(--primary-light)" />
-                    {spotlightMatch.venue || "Gymkhana Sports Complex"}
-                  </span>
-                  <span>
-                    <Clock size={13} color="var(--primary-light)" />
-                    {spotlightMatch.time || "Scheduled"}
-                  </span>
-                </div>
-
-                {/* Commentary Drawer */}
-                {spotlightMatch.liveUpdates && (
-                  <div className="pggc-commentary-drawer">
-                    <button
-                      className="pggc-comm-toggle-btn"
-                      onClick={() => setIsCommentaryOpen(!isCommentaryOpen)}
-                    >
-                      <span>Play-by-Play Live Commentary</span>
-                      {isCommentaryOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                    </button>
-
-                    {isCommentaryOpen && (
-                      <div className="pggc-commentary-feed-list">
-                        {Object.values(spotlightMatch.liveUpdates)
-                          .sort((a, b) => b.timestamp - a.timestamp)
-                          .map((item, idx) => (
-                            <div key={idx} className="pggc-comm-item">
-                              <span className="time">
-                                {new Date(item.timestamp).toLocaleTimeString([], {
-                                  hour: "2-digit",
-                                  minute: "2-digit",
-                                })}
-                              </span>
-                              <span className="text">{item.message}</span>
-                            </div>
-                          ))}
-                      </div>
-                    )}
-                  </div>
-                )}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "16px" }}>
+              <div>
+                <h2 className="pggc-section-title">
+                  Match <span className="italic">Spotlight &amp; Tracker</span>.
+                </h2>
+                <p className="pggc-section-sub">
+                  Real-time score updates, completed tournament GCs, and upcoming department fixtures direct from Powai.
+                </p>
               </div>
 
-              {/* Right: Fixture Selector Strip */}
-              <div>
-                <div style={{ marginBottom: "10px", fontSize: "12px", color: "var(--muted-2)", fontFamily: "JetBrains Mono, monospace" }}>
-                  OTHER PGGC FIXTURES ({matchesList.length})
-                </div>
-                <div className="pggc-fixtures-scroll">
-                  {matchesList.map((m) => {
-                    const isSelected = m.id === spotlightMatch.id;
-                    return (
-                      <button
-                        key={m.id}
-                        className={`pggc-fixture-card ${isSelected ? "is-selected" : ""}`}
-                        onClick={() => setSelectedMatchId(m.id)}
-                      >
-                        <div className="pggc-fix-top">
-                          <span>{m.sport} · {m.stage}</span>
-                          <span className={`pggc-status-pill ${m.status}`} style={{ fontSize: "9px", padding: "2px 6px" }}>
-                            {m.status}
-                          </span>
-                        </div>
-                        <div className="pggc-fix-teams">
-                          <span>{getDeptInitials(m.teamA)} ({m.scoreA})</span>
-                          <span style={{ color: "var(--muted-2)", fontSize: "10px" }}>vs</span>
-                          <span>{getDeptInitials(m.teamB)} ({m.scoreB})</span>
-                        </div>
-                        <div className="pggc-fix-meta">
-                          <span>{m.venue}</span>
-                          <span>{m.time}</span>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
+              {/* Options in the live section */}
+              <div className="pggc-live-options-bar">
+                <button
+                  className={`pggc-live-opt-btn ${liveTab === "concluded" ? "is-active" : ""}`}
+                  onClick={() => setLiveTab("concluded")}
+                >
+                  <Trophy size={14} />
+                  <span>Completed GCs ({CONCLUDED_GCS.length})</span>
+                </button>
+                <button
+                  className={`pggc-live-opt-btn ${liveTab === "spotlight" ? "is-active" : ""}`}
+                  onClick={() => setLiveTab("spotlight")}
+                >
+                  <Flame size={14} />
+                  <span>Match Spotlight</span>
+                </button>
+                <button
+                  className={`pggc-live-opt-btn ${liveTab === "upcoming" ? "is-active" : ""}`}
+                  onClick={() => setLiveTab("upcoming")}
+                >
+                  <Clock size={14} />
+                  <span>Upcoming Schedule</span>
+                </button>
               </div>
             </div>
-          ) : (
-            <div className="pggc-featured-hud pggc-hud-blank">
-              <div className="pggc-hud-badge-bar">
-                <span className="pggc-status-pill upcoming">
-                  FIXTURES SCHEDULED
-                </span>
-                <div className="pggc-hud-sport-title">
-                  <Flame size={15} color="var(--primary-light)" />
-                  <span>PGGC 2024–25 Season</span>
-                </div>
-              </div>
+          </div>
 
-              <div className="pggc-blank-state-content">
-                <div className="pggc-blank-state-icon">
-                  <Clock size={24} />
+          {/* Season Progress Ribbon */}
+          <div className="pggc-season-progress-ribbon">
+            <div className="pggc-season-progress-info">
+              <span className="pggc-progress-tag">
+                <span className="pggc-live-dot" /> {CONCLUDED_GCS.length} of {sportsKeys.length} PGGC Disciplines Concluded
+              </span>
+              <span className="pggc-progress-meta">
+                Concluded: Table Tennis (Boys &amp; Girls), Chess (Mixed), Carrom (Boys &amp; Girls), Squash (Boys)
+              </span>
+            </div>
+            <div className="pggc-progress-track">
+              <div
+                className="pggc-progress-fill"
+                style={{ width: `${Math.round((CONCLUDED_GCS.length / sportsKeys.length) * 100)}%` }}
+              />
+            </div>
+          </div>
+
+          {/* Option 1: Concluded GCs */}
+          {liveTab === "concluded" && (
+            <div className="pggc-concluded-gcs-grid">
+              {CONCLUDED_GCS.map((gc) => (
+                <div key={gc.id} className="pggc-concluded-card">
+                  <div>
+                    <div className="pggc-concluded-card-top">
+                      <div>
+                        <h4 className="pggc-concluded-sport-title">{gc.sport}</h4>
+                        <span className="pggc-concluded-category-pill">{gc.category}</span>
+                      </div>
+                      <span className="pggc-status-pill finished" style={{ fontSize: "9px" }}>
+                        Concluded
+                      </span>
+                    </div>
+
+                    <div className="pggc-concluded-podium-stack">
+                      <div className="pggc-concluded-podium-row gold">
+                        <span>🥇 {gc.gold}</span>
+                        <span>+{gc.goldPoints} pts</span>
+                      </div>
+                      <div className="pggc-concluded-podium-row silver">
+                        <span>🥈 {gc.silver}</span>
+                        <span>+{gc.silverPoints} pts</span>
+                      </div>
+                      <div className="pggc-concluded-podium-row bronze">
+                        <span>🥉 {gc.bronze}</span>
+                        <span>+{gc.bronzePoints} pts</span>
+                      </div>
+                    </div>
+
+                    <p className="pggc-concluded-desc">{gc.description}</p>
+                  </div>
+
+                  <button
+                    className="pggc-concluded-action-btn"
+                    onClick={() => {
+                      setSelectedSport(gc.sport);
+                      const el = document.getElementById("disciplines-section");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    <span>View Discipline Standings</span>
+                    <ChevronRight size={13} />
+                  </button>
                 </div>
-                <h3 className="pggc-blank-title">Live Scorecard Awaiting Tournament Fixtures</h3>
-                <p className="pggc-blank-desc">
-                  Department matches, live set/inning scores, and play-by-play court commentary
-                  will be broadcasted here in real-time as soon as fixtures commence across Gymkhana and SAC arenas.
-                </p>
-                <div className="pggc-blank-tags">
-                  <span>17 Departments Registered</span>
-                  <span>·</span>
-                  <span>14 Sports Disciplines</span>
-                  <span>·</span>
-                  <span>Live Broadcast Standby</span>
+              ))}
+            </div>
+          )}
+
+          {/* Option 2: Live / Spotlight Match HUD */}
+          {liveTab === "spotlight" && (
+            spotlightMatch ? (
+              <div className="pggc-arena-grid">
+                {/* Left: Spotlight Match HUD */}
+                <div className="pggc-featured-hud">
+                  <div className="pggc-hud-badge-bar">
+                    <span className={`pggc-status-pill ${spotlightMatch.status}`}>
+                      {spotlightMatch.status === "live" && <span className="pggc-live-dot" />}
+                      {spotlightMatch.status}
+                    </span>
+
+                    <div className="pggc-hud-sport-title">
+                      <Flame size={15} color="var(--primary-light)" />
+                      <span>{spotlightMatch.sport}</span>
+                      <span className="pggc-hud-stage">· {spotlightMatch.stage}</span>
+                    </div>
+                  </div>
+
+                  {/* Faceoff */}
+                  <div className="pggc-faceoff">
+                    <div className="pggc-team-pane">
+                      <span className="pggc-team-emblem">
+                        {getDeptInitials(spotlightMatch.teamA)}
+                      </span>
+                      <div className="pggc-team-name-lg">{spotlightMatch.teamA}</div>
+                      <div className="pggc-team-score-num">{spotlightMatch.scoreA}</div>
+                    </div>
+
+                    <div className="pggc-score-vs-divider">
+                      <span className="pggc-vs-badge">VS</span>
+                    </div>
+
+                    <div className="pggc-team-pane align-right">
+                      <span className="pggc-team-emblem">
+                        {getDeptInitials(spotlightMatch.teamB)}
+                      </span>
+                      <div className="pggc-team-name-lg">{spotlightMatch.teamB}</div>
+                      <div className="pggc-team-score-num">{spotlightMatch.scoreB}</div>
+                    </div>
+                  </div>
+
+                  {/* Venue & Clock */}
+                  <div className="pggc-hud-meta-bar">
+                    <span>
+                      <MapPin size={13} color="var(--primary-light)" />
+                      {spotlightMatch.venue || "Gymkhana Sports Complex"}
+                    </span>
+                    <span>
+                      <Clock size={13} color="var(--primary-light)" />
+                      {spotlightMatch.time || "Scheduled"}
+                    </span>
+                  </div>
+
+                  {/* Commentary Drawer */}
+                  {spotlightMatch.liveUpdates && (
+                    <div className="pggc-commentary-drawer">
+                      <button
+                        className="pggc-comm-toggle-btn"
+                        onClick={() => setIsCommentaryOpen(!isCommentaryOpen)}
+                      >
+                        <span>Play-by-Play Commentary &amp; Highlights</span>
+                        {isCommentaryOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                      </button>
+
+                      {isCommentaryOpen && (
+                        <div className="pggc-commentary-feed-list">
+                          {Object.values(spotlightMatch.liveUpdates)
+                            .sort((a, b) => b.timestamp - a.timestamp)
+                            .map((item, idx) => (
+                              <div key={idx} className="pggc-comm-item">
+                                <span className="time">
+                                  {new Date(item.timestamp).toLocaleTimeString([], {
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                  })}
+                                </span>
+                                <span className="text">{item.message}</span>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Right: Fixture Selector Strip */}
+                <div>
+                  <div style={{ marginBottom: "10px", fontSize: "12px", color: "var(--muted-2)", fontFamily: "JetBrains Mono, monospace" }}>
+                    HIGHLIGHTED PGGC MATCHES ({matchesList.length})
+                  </div>
+                  <div className="pggc-fixtures-scroll">
+                    {matchesList.map((m) => {
+                      const isSelected = m.id === spotlightMatch.id;
+                      return (
+                        <button
+                          key={m.id}
+                          className={`pggc-fixture-card ${isSelected ? "is-selected" : ""}`}
+                          onClick={() => setSelectedMatchId(m.id)}
+                        >
+                          <div className="pggc-fix-top">
+                            <span>{m.sport} · {m.stage}</span>
+                            <span className={`pggc-status-pill ${m.status}`} style={{ fontSize: "9px", padding: "2px 6px" }}>
+                              {m.status}
+                            </span>
+                          </div>
+                          <div className="pggc-fix-teams">
+                            <span>{getDeptInitials(m.teamA)} ({m.scoreA})</span>
+                            <span style={{ color: "var(--muted-2)", fontSize: "10px" }}>vs</span>
+                            <span>{getDeptInitials(m.teamB)} ({m.scoreB})</span>
+                          </div>
+                          <div className="pggc-fix-meta">
+                            <span>{m.venue}</span>
+                            <span>{m.time}</span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
+            ) : (
+              <div className="pggc-featured-hud pggc-hud-blank">
+                <div className="pggc-hud-badge-bar">
+                  <span className="pggc-status-pill upcoming">
+                    FIXTURES SCHEDULED
+                  </span>
+                  <div className="pggc-hud-sport-title">
+                    <Flame size={15} color="var(--primary-light)" />
+                    <span>PGGC Season</span>
+                  </div>
+                </div>
+
+                <div className="pggc-blank-state-content">
+                  <div className="pggc-blank-state-icon">
+                    <Clock size={24} />
+                  </div>
+                  <h3 className="pggc-blank-title">Live Scorecard Awaiting Active Match Broadcast</h3>
+                  <p className="pggc-blank-desc">
+                    Upcoming department matches, live set scores, and play-by-play commentary will stream here in real-time as matches get underway.
+                  </p>
+                  <div className="pggc-blank-tags">
+                    <span>{DEPARTMENTS.length} Departments Registered</span>
+                    <span>·</span>
+                    <span>{sportsKeys.length} Disciplines</span>
+                    <span>·</span>
+                    <span>{CONCLUDED_GCS.length} GCs Concluded</span>
+                  </div>
+                </div>
+              </div>
+            )
+          )}
+
+          {/* Option 3: Upcoming Disciplines */}
+          {liveTab === "upcoming" && (
+            <div className="pggc-upcoming-disciplines-grid">
+              {[
+                { sport: "Cricket", venue: "Gymkhana Cricket Grounds", dates: "Upcoming Round 1" },
+                { sport: "Football", venue: "Gymkhana Football Field", dates: "Upcoming Knockouts" },
+                { sport: "Badminton", venue: "SAC Indoor Badminton Courts", dates: "Fixtures Announced" },
+                { sport: "Basketball", venue: "Gymkhana Basketball Courts", dates: "Group Stages" },
+                { sport: "Volleyball", venue: "Gymkhana Volleyball Courts", dates: "Fixtures Scheduled" },
+                { sport: "Athletics", venue: "IITB Sports Complex Track", dates: "Track & Field Meets" },
+                { sport: "Squash (Girls)", venue: "Gymkhana Squash Courts", dates: "Awaiting Schedule" },
+                { sport: "Lawn Tennis", venue: "SAC Tennis Courts", dates: "Inter-Department Ties" },
+                { sport: "Weightlifting", venue: "SAC Powerlifting Arena", dates: "Category Weigh-ins" },
+                { sport: "Tug of War", venue: "Gymkhana Ground", dates: "Heavyweight Battles" },
+                { sport: "Aquatics", venue: "IITB Swimming Pool", dates: "Sprint & Relay Heats" },
+              ].map((up) => (
+                <div key={up.sport} className="pggc-upcoming-card">
+                  <div>
+                    <h5 className="pggc-upcoming-card-title">{up.sport}</h5>
+                    <span style={{ fontSize: "11px", color: "var(--muted-2)", fontFamily: "JetBrains Mono, monospace" }}>
+                      {up.venue}
+                    </span>
+                  </div>
+                  <div style={{ marginTop: "12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span className="pggc-status-pill upcoming" style={{ fontSize: "9px" }}>
+                      {up.dates}
+                    </span>
+                    <button
+                      className="pggc-sort-btn"
+                      style={{ fontSize: "10px", padding: "4px 8px" }}
+                      onClick={() => {
+                        setSelectedSport(up.sport);
+                        const el = document.getElementById("disciplines-section");
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }}
+                    >
+                      Standings
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </section>
@@ -562,29 +698,29 @@ export default function PGGC() {
           </div>
         </section>
 
-        {/* 7. DUAL PANE: 17 DEPARTMENTS LEDGER & DEPARTMENT DOSSIER */}
+        {/* 7. DUAL PANE: DEPARTMENTS LEDGER & DEPARTMENT DOSSIER */}
         <section className="pggc-ledger-section">
           <div className="pggc-section-header">
             <div className="pggc-eyebrow">
               <span className="num">§ 03</span>
               <span>·</span>
-              <span>The 17-Department Ledger & Dossier</span>
+              <span>The {DEPARTMENTS.length}-Department Ledger &amp; Dossier</span>
               <span className="bar" />
             </div>
             <h2 className="pggc-section-title">
               Complete <span className="italic">Standings</span>.
             </h2>
             <p className="pggc-section-sub">
-              Every department in strict alphabetical order. Click any department row to inspect their sporting dossier.
+              Every department and centre in official ranking order. Click any department row to inspect their sporting dossier.
             </p>
           </div>
 
           <div className="pggc-dual-ledger">
-            {/* Table of all 17 departments */}
+            {/* Table of all departments */}
             <div className="pggc-table-card">
               <div className="pggc-table-header">
                 <h3>Department Ledger</h3>
-                <span>{displayDepartments.length} of 17 Departments Listed</span>
+                <span>{displayDepartments.length} of {DEPARTMENTS.length} Departments Listed</span>
               </div>
 
               <div style={{ overflowX: "auto" }}>
@@ -700,7 +836,7 @@ export default function PGGC() {
         </section>
 
         {/* 8. DISCIPLINES MATRIX (Horizontal Pill Strip & Sport Podiums) */}
-        <section className="pggc-disciplines-section">
+        <section className="pggc-disciplines-section" id="disciplines-section">
           <div className="pggc-section-header">
             <div className="pggc-eyebrow">
               <span className="num">§ 04</span>
@@ -744,34 +880,74 @@ export default function PGGC() {
             </div>
 
             {selectedSportRankings.length > 0 ? (
-              <div className="pggc-sport-result-podium">
-                {selectedSportRankings[0] && (
-                  <div className="pggc-sport-medal-box gold">
-                    <div className="badge">
-                      <Trophy size={14} /> Winner · Gold Medal
+              <div>
+                <div className="pggc-sport-result-podium">
+                  {selectedSportRankings[0] && (
+                    <div className="pggc-sport-medal-box gold">
+                      <div className="badge">
+                        <Trophy size={14} /> Winner · Gold Medal
+                      </div>
+                      <div className="dname">{selectedSportRankings[0].name}</div>
+                      <div className="dpts">{selectedSportRankings[0].points} Points</div>
                     </div>
-                    <div className="dname">{selectedSportRankings[0].name}</div>
-                    <div className="dpts">{selectedSportRankings[0].points} Points</div>
-                  </div>
-                )}
+                  )}
 
-                {selectedSportRankings[1] && (
-                  <div className="pggc-sport-medal-box silver">
-                    <div className="badge">
-                      <Medal size={14} /> Runner-up · Silver Medal
+                  {selectedSportRankings[1] && (
+                    <div className="pggc-sport-medal-box silver">
+                      <div className="badge">
+                        <Medal size={14} /> Runner-up · Silver Medal
+                      </div>
+                      <div className="dname">{selectedSportRankings[1].name}</div>
+                      <div className="dpts">{selectedSportRankings[1].points} Points</div>
                     </div>
-                    <div className="dname">{selectedSportRankings[1].name}</div>
-                    <div className="dpts">{selectedSportRankings[1].points} Points</div>
-                  </div>
-                )}
+                  )}
 
-                {selectedSportRankings[2] && (
-                  <div className="pggc-sport-medal-box bronze">
-                    <div className="badge">
-                      <Award size={14} /> Third Place · Bronze Medal
+                  {selectedSportRankings[2] && (
+                    <div className="pggc-sport-medal-box bronze">
+                      <div className="badge">
+                        <Award size={14} /> Third Place · Bronze Medal
+                      </div>
+                      <div className="dname">{selectedSportRankings[2].name}</div>
+                      <div className="dpts">{selectedSportRankings[2].points} Points</div>
                     </div>
-                    <div className="dname">{selectedSportRankings[2].name}</div>
-                    <div className="dpts">{selectedSportRankings[2].points} Points</div>
+                  )}
+                </div>
+
+                {/* Full Sport Standings Table */}
+                {selectedSportRankings.length > 3 && (
+                  <div className="pggc-sport-rest-section">
+                    <div className="pggc-sport-rest-title">All Scoring Departments in {selectedSport}</div>
+                    <div style={{ overflowX: "auto" }}>
+                      <table className="pggc-sport-rest-table">
+                        <thead>
+                          <tr>
+                            <th style={{ width: "60px" }}>Rank</th>
+                            <th>Department</th>
+                            <th style={{ textAlign: "right", width: "100px" }}>Points</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {selectedSportRankings.map((team, idx) => (
+                            <tr key={team.name}>
+                              <td>
+                                <span className={`pggc-rank-badge ${idx === 0 ? "rank-gold-text" : idx === 1 ? "rank-silver-text" : idx === 2 ? "rank-bronze-text" : ""}`}>
+                                  #{idx + 1}
+                                </span>
+                              </td>
+                              <td>
+                                <div className="pggc-dept-cell">
+                                  <span className="pggc-dept-badge">{getDeptInitials(team.name)}</span>
+                                  <span className="pggc-dept-fullname">{team.name}</span>
+                                </div>
+                              </td>
+                              <td style={{ textAlign: "right", fontWeight: "600", color: idx < 3 ? "var(--cream)" : "var(--muted)" }}>
+                                +{team.points} pts
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
               </div>
@@ -785,20 +961,20 @@ export default function PGGC() {
           </div>
         </section>
 
-        {/* 9. ALL 17 DEPARTMENTS DIRECTORY (Strict Alphabetical Order) */}
+        {/* 9. ALL DEPARTMENTS DIRECTORY (Strict Alphabetical Order) */}
         <section className="pggc-directory-section">
           <div className="pggc-section-header">
             <div className="pggc-eyebrow">
               <span className="num">§ 05</span>
               <span>·</span>
-              <span>Roster of 17 Academic Departments</span>
+              <span>Roster of {DEPARTMENTS.length} Academic Departments &amp; Centres</span>
               <span className="bar" />
             </div>
             <h2 className="pggc-section-title">
               Complete <span className="italic">Department Directory</span>.
             </h2>
             <p className="pggc-section-sub">
-              All 17 postgraduate departments presented in strict alphabetical order with complete official names.
+              All {DEPARTMENTS.length} postgraduate departments and centres presented in strict alphabetical order with complete official names.
             </p>
           </div>
 
@@ -849,7 +1025,7 @@ export default function PGGC() {
         {/* 10. FOOTER / COLOPHON */}
         <footer className="pggc-footer">
           <div>
-            <em>Indian Institute of Technology Bombay · Post-Graduate General Championship</em>
+            <em>Indian Institute of Technology Bombay · PGGC</em>
           </div>
           <div>
             Set in HighSchoolUsaSans, Roboto &amp; JetBrains Mono &nbsp;·&nbsp;{" "}
