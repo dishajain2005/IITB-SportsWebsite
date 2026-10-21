@@ -1088,7 +1088,7 @@ export default function PGGC() {
             <em>Indian Institute of Technology Bombay · PGGC</em>
           </div>
           <div>
-            Inter Tight, JetBrains Mono &nbsp;·&nbsp;{" "}
+            <em>Set in Fraunces &amp; JetBrains Mono.</em> &nbsp;·&nbsp;{" "}
             <Link to="/gc-admin">GC Admin Scorekeeper Portal</Link>
           </div>
           <div style={{ color: "var(--muted-2)", fontSize: "10px" }}>
