@@ -734,7 +734,7 @@ export default function PGGC() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid var(--rule)", paddingBottom: "12px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <Flame size={20} color="var(--primary-light)" />
-                <h3 style={{ margin: 0, fontFamily: "Fraunces, serif", fontSize: "20px", color: "#fff" }}>
+                <h3 style={{ margin: 0, fontFamily: "var(--heading-font), 'HighSchoolUsaSans', 'Trebuchet MS', Arial, sans-serif", fontSize: "20px", color: "#fff" }}>
                   {selectedSport} Tournament Results
                 </h3>
               </div>
@@ -852,7 +852,7 @@ export default function PGGC() {
             <em>Indian Institute of Technology Bombay · Post-Graduate General Championship</em>
           </div>
           <div>
-            Set in Fraunces, Inter Tight &amp; JetBrains Mono &nbsp;·&nbsp;{" "}
+            Set in HighSchoolUsaSans, Roboto &amp; JetBrains Mono &nbsp;·&nbsp;{" "}
             <Link to="/gc-admin">GC Admin Scorekeeper Portal</Link>
           </div>
           <div style={{ color: "var(--muted-2)", fontSize: "10px" }}>
