@@ -14,6 +14,7 @@ import Webteam from "./components/Contact/webteam";
 import BookingPage from "./components/turf-booking/BookingPage";
 import AdminPage from "./components/turf-booking/AdminPage";
 import GC from "./components/Gc/GC";
+import PGGC from "./components/PGGC/PGGC";
 import SportsCalendar from "./components/EventsTimeline";
 import CourtStatus from "./components/CourtStatus/CourtStatus";
 import "./App.css";
@@ -79,6 +80,8 @@ function App() {
             <Route path="/CourtStatus" element={<CourtStatus/>} />
             <Route path="/turfbooking" element={<BookingPage/>} />
             <Route path="/GC" element={<GC/>} />
+            <Route path="/pggc" element={<PGGC />} />
+            <Route path="/PGGC" element={<PGGC />} />
             <Route path="/admin-turf-booking-raj" element={<AdminPage/>} />
             <Route path="/events-timeline" element={<SportsCalendar/>} />
             <Route path="/football" element={<Football />} />

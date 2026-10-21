@@ -9,6 +9,7 @@ const links = [
   { to: '/explore', label: 'Sports' },
   { to: '/CourtStatus', label: 'Court Status' },
   { to: '/GC', label: 'GC' },
+  { to: '/pggc', label: 'PGGC' },
   { to: '/yearbook', label: 'Yearbook' },
   // { to: '/blogs', label: 'Blogs' },
   { to: '/events-timeline', label: 'Events Timeline' },
@@ -29,7 +30,7 @@ const Navbar = () => {
 
   const isActive = (path) => {
     if (path === '/' && location.pathname === '/') return true;
-    if (path !== '/' && location.pathname === path) return true;
+    if (path !== '/' && location.pathname.toLowerCase() === path.toLowerCase()) return true;
     return false;
   };
 
